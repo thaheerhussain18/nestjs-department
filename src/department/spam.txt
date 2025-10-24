@@ -1,0 +1,152 @@
+  async createuserid_info(){
+    const {first_name,last_name,username,password}={first_name:"thaheer",last_name:"hussain",username:"thaheeruser",password:"1234"}
+  // const userInfo = await this.prismaService.user_information.create({
+  //     data: {
+  //       first_name,
+  //       last_name,
+  //       license_id,
+  //       user_credential: {
+  //         create: {
+  //           username,
+  //           password,
+  //           license_id,
+  //         },
+  //       },
+  //     },
+  //     include: {
+  //       user_credential: true, 
+  //     },
+  //   });
+
+  }
+
+
+update
+
+const existing = await this.prismaService.m_master_department.findUnique({ where: { id } });
+    console.log(existing)
+
+    if (!existing) {
+      throw new Error(`dep with id ${id} not found`);
+    }
+
+    console.log(existing)
+
+    const updatedDepartment = await this.prismaService.m_master_department.update({
+      where: { id },
+      data: {
+        name: updateDepartmentDto.name,
+        code: updateDepartmentDto.code,
+        description: updateDepartmentDto.description,
+        status: updateDepartmentDto.status,
+        modified_by_id: updateDepartmentDto.modified_by_id,
+        modified_on: new Date(),
+      },
+    });
+    let str = ""
+    if (updateDepartmentDto.code) {
+      str = `Department code has been changed from ${existing.code} to ${updateDepartmentDto.code}`
+    }
+    if (updateDepartmentDto.name) {
+      str = `Department name has been changed from ${existing.name} to ${updateDepartmentDto.name}`
+    }
+    if (updateDepartmentDto.description) {
+      str = `Department description has been changed from ${existing.description} to ${updateDepartmentDto.description}`
+    }
+    if (updateDepartmentDto.status) {
+      str = `Department status has been changed from ${existing.status} to ${updateDepartmentDto.status}`
+    }
+    await this.prismaService.m_master_department_log.create({
+      data: {
+        name: updatedDepartment.name,
+        code: updatedDepartment.code,
+        license_id: updatedDepartment.license_id,
+        description: updatedDepartment.description,
+        status: updatedDepartment.status,
+
+        change_description: str,
+        action: "Modified",
+        department_id: updatedDepartment.id,
+        created_by_id: updatedDepartment.created_by_id,
+      },
+    });
+
+
+  //   if(department){
+  //     // console.log( department.created_by)
+  //     department.created_by_username=`${department.created_by.first_name}${department.created_by.last_name}`
+  //     // department.created_by=department.getfullname()
+  //  }
+     
+      //include in department
+      // const datax = await this.prismaService.user_information.findFirst({
+      //   where: {
+      //     credential_id: 1
+      //   }
+      // })
+      // if (datax) {
+      //   department.created_by_username = datax.first_name + datax.last_name
+      // }
+      // console.log("created" + department)
+
+      // await this.prismaService.m_master_department_log.create({
+      //   data: {
+      //     name: department.name,
+      //     code: department.code,
+      //     license_id: department.license_id,
+      //     description: department.description,
+      //     status: department.status,
+      //     change_description: 'Department created successfully',
+      //     action: 'Created',
+      //     department_id: department.id,
+      //     created_by_id:userdata.user_id,
+      //   },
+      // });
+
+
+      // include:{
+        //   created_by:{
+        //     select:{
+        //       first_name:true,
+        //       last_name:true
+        //     }
+        //   }
+        // }
+
+
+         const existing = await this.prismaService.m_master_department.findUnique({ where: { id } });
+    if (!existing) {
+      throw new NotFoundException(`Department with id ${id} not found`);
+    }
+    await this.prismaService.m_master_department.update({
+      where: { id }, data: {
+        status: false,
+        modified_by_id: 1,
+
+      }
+    })
+    await this.prismaService.m_master_department_log.create({
+      data: {
+        name: existing.name,
+        code: existing.code,
+        license_id: existing.license_id,
+        description: existing.description,
+        status: existing.status,
+        change_description: existing.description,
+        action: "Deactivated",
+        department_id: existing.id,
+        created_by_id: existing.created_by_id,
+      },
+    });
+
+    return { message: "deactivated" };
+
+    it("it should throw error if department alreadt exists",async ()=>{
+    const createDepartmentDto = { name: 'thaheer', code: 'DEP001', description: 'Dev' };
+    const userdata = { user_id: 1, license_id: 1 };
+
+    departmentserviceRelatedFunction.existingUserCheck = jest.fn().mockResolvedValue(undefined);
+    departmentserviceRelatedFunction.nameAndCodeCheckExits = jest.fn().mockRejectedValue(new Error('Department already exists'));
+
+    await expect(service.create(createDepartmentDto,userdata)).rejects.toThrow("Department already exists")
+  })

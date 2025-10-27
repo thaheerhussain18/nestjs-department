@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
 import { DepartmentService } from './department.service';
 import { CreateDepartmentDto } from './dto/create-department.dto';
 import { UpdateDepartmentDto } from './dto/update-department.dto';
@@ -13,6 +13,7 @@ export class DepartmentController {
     }
  
   @Post()
+  @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
   async create(@Body() createDepartmentDto: CreateDepartmentDto) {
     const userdata=this.getLoggedInUserData()
     return await this.departmentService.create(createDepartmentDto,userdata);

@@ -7,20 +7,18 @@ import { ResponseDto } from './dto/responsedto';
 
 import { action } from '../../generated/department';
 import { logParam } from './interfaces/logparam';
-import { departmentservicerelatedfunctions } from './utility/departmentservicerelatedfunctions';
+import { DepartmentServiceRelatedFunctions } from './utility/departmentservicerelatedfunctions';
 
 
 @Injectable()
 export class DepartmentService {
   constructor(private prismaService: PrismaService,
-    private serviceRelatedFunctions:departmentservicerelatedfunctions
+    private serviceRelatedFunctions:DepartmentServiceRelatedFunctions
   ) { }
   async create(createDepartmentDto: CreateDepartmentDto, userdata: userData ) {
     try {
       let { name, code, description } = createDepartmentDto;
-      console.log('post method');
-
-      
+      // console.log('post method');      
       await this.serviceRelatedFunctions.existingUserCheck(userdata)
       await this.serviceRelatedFunctions.nameAndCodeCheckExits(name,code,userdata.license_id) 
 

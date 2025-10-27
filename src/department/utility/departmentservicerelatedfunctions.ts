@@ -5,7 +5,7 @@ import { userData } from "../interfaces/userdata.interface";
 import { logParam } from "../interfaces/logparam";
 
 @Injectable()
-export class departmentservicerelatedfunctions{
+export class DepartmentServiceRelatedFunctions{
 
     constructor(private prismaService:PrismaService){}
     async nameAndCodeCheckExits(name,code,license_id){

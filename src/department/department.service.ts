@@ -5,7 +5,7 @@ import { PrismaService } from '../prismaservice';
 import { userData } from './interfaces/userdata.interface';
 import { ResponseDto } from './dto/responsedto';
 
-import { action } from '../../generated/department';
+import { action, m_master_department } from '../../generated/department';
 import { logParam } from './interfaces/logparam';
 import { DepartmentServiceRelatedFunctions } from './utility/departmentservicerelatedfunctions';
 import { response } from 'express';
@@ -70,17 +70,28 @@ async update(id: number, updateDepartmentDto: UpdateDepartmentDto, userdata: use
     }
 
     const { name, code, description } = updateDepartmentDto;
-    const updatedDepartment = await this.prismaService.m_master_department.update({
+    if (!name && !code && !description) throw new BadRequestException("Nothing to update");
+
+    const updatedata:{name?:string,code?:string,description?:string,modified_on:Date,modified_by_id:number}={
+      modified_on: new Date(),
+      modified_by_id: userdata.user_id,};
+
+    if(name!==undefined){
+      updatedata.name=name;
+    }
+    if(code!==undefined){
+      updatedata.code=code;
+    }
+    if(description!==undefined){
+      updatedata.description=description;
+    }
+    
+    const updatedDepartment:m_master_department = await this.prismaService.m_master_department.update({
       where: { id },
-      data: {
-        name,
-        code,
-        description,
-        modified_on: new Date(),
-        modified_by_id: userdata.user_id,
-      },
+      data:updatedata
+      ,
     });
-    console.log('Updated Department:', updatedDepartment);
+    // console.log('Updated Department:', updatedDepartment);
     const logParams: logParam = {
       department: updatedDepartment,
       action: action.Modified,
@@ -89,13 +100,14 @@ async update(id: number, updateDepartmentDto: UpdateDepartmentDto, userdata: use
     };
     this.serviceRelatedFunctions.logFunction(logParams);
 
-    console.log(updatedDepartment);
+    // console.log(updatedDepartment);
 
     return { updatedDepartment };
   } catch (error) {
     throw error;
   }
-} async getDepartmentByID(id: number) {
+} 
+async getDepartmentByID(id: number) {
     if (!id) throw new BadRequestException('Department ID is required');
 
     return (await this.prismaService.m_master_department.findFirst({ where: { id } }))

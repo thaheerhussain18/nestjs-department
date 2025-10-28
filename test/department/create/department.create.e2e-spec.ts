@@ -2,9 +2,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
-import { AppModule } from '../../src/app.module';
-import { departmentCreateTests, generate } from './helpers/department-create-cases';
-import { caseType } from './utility-interfaces';
+import { AppModule } from '../../../src/app.module';
+import { departmentCreateTests } from './department-create-cases';
+import {generate} from '../helpers/name-code-description-generator';
+import { caseType } from '../utility-interfaces';
 
 
 const cases = departmentCreateTests();
@@ -37,9 +38,7 @@ describe('Department Create E2E', () => {
                 // console.log(res.status)
             }
         });
-    });
 
-    
     it('❌ should fail when department name & code already exists', async () => {
         const payload = generate(true);
         await request(app.getHttpServer()).post('/department').send(payload).expect(201);
@@ -47,6 +46,9 @@ describe('Department Create E2E', () => {
         const res = await request(app.getHttpServer()).post('/department').send(payload);
         expect(res.status).toBeGreaterThanOrEqual(400);
     });
+    });
+
+    
 
     afterAll(async () => {
         await app.close();

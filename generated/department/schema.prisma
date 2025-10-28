@@ -61,7 +61,7 @@ model m_master_department_log {
   description        String?
   created_on         DateTime             @default(now())
   status             Boolean?
-  change_description String
+  change_description String               @db.LongText
   action             action
   department_id      Int?
   created_by_id      Int

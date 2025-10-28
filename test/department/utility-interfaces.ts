@@ -1,7 +1,8 @@
 
 export interface caseType {
     test_case_name: string;
-    data: () => any;
+    datacreate?:  () =>   any;
+    dataUpdate?:  (app) =>   Promise<validData> | any;
     expected: number;
 }
 
@@ -14,4 +15,10 @@ export enum invalid_caseTypeEnum {
     MAX='max',
     REGEX='regex',
     MISSING='missing'
+}
+
+export interface validData{
+    name:string;
+    code:string;
+    description:string;
 }

@@ -68,6 +68,7 @@ export class DepartmentServiceRelatedFunctions{
         break;
       case 'Modified':
         change_description = `Department  was modified. Changes: ${this.getExistingChangesDescription(PreviousData,department)}`;
+        // console.log('Change Description in logFunction:', change_description);
         break;
       default:
         change_description = "Unknown action.";
@@ -118,10 +119,10 @@ export class DepartmentServiceRelatedFunctions{
       changeDescription += `Description changed from ${existing.description} to ${description}. `;
     }
 
-    console.log('Changes Detected:', changesDetected);
-    if (changesDetected) {
-      console.log('Change Description:', changeDescription);
-    }
+    // console.log('Changes Detected:', changesDetected);
+    // if (changesDetected) {
+    //   console.log('Change Description:', changeDescription);
+    // }
     return changeDescription;}
 
 }

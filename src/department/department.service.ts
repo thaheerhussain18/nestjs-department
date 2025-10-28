@@ -11,6 +11,7 @@ import { DepartmentServiceRelatedFunctions } from './utility/departmentservicere
 import { response } from 'express';
 import { get } from 'http';
 import { log } from 'console';
+import { ValidateUpdateData } from './interfaces/validate-update-data';
 
 
 @Injectable()
@@ -68,24 +69,15 @@ async update(id: number, updateDepartmentDto: UpdateDepartmentDto, userdata: use
     if (!existing) {
       throw new BadRequestException(`Department with id ${id} not found`);
     }
+    await this.serviceRelatedFunctions.nameAndCodeCheckExitsUpdate(updateDepartmentDto.name, updateDepartmentDto.code, userdata.license_id,id);
+    
 
     const { name, code, description } = updateDepartmentDto;
     if (!name && !code && !description) throw new BadRequestException("Nothing to update");
-
-    const updatedata:{name?:string,code?:string,description?:string,modified_on:Date,modified_by_id:number}={
-      modified_on: new Date(),
-      modified_by_id: userdata.user_id,};
-
-    if(name!==undefined){
-      updatedata.name=name;
-    }
-    if(code!==undefined){
-      updatedata.code=code;
-    }
-    if(description!==undefined){
-      updatedata.description=description;
-    }
+    const updatedata=  this.serviceRelatedFunctions.validateUpdateData({name,code,description},userdata.user_id)
+    // console.log('Update Data:', updatedata);
     
+    // console.log(updatedata.name,updatedata.code,updatedata.description);
     const updatedDepartment:m_master_department = await this.prismaService.m_master_department.update({
       where: { id },
       data:updatedata
@@ -113,7 +105,6 @@ async getDepartmentByID(id: number) {
     return (await this.prismaService.m_master_department.findFirst({ where: { id } }))
 
   }
-
 
 
   async findAll() {

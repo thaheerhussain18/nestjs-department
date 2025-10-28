@@ -34,7 +34,6 @@ export class CreateDepartmentDto {
   code:string
 
 
-
   @IsString()
   @IsNotEmpty()
   @ApiProperty()

@@ -1,8 +1,9 @@
+import { INestApplication } from "@nestjs/common";
 
 export interface caseType {
     test_case_name: string;
-    datacreate?:  () =>   any;
-    dataUpdate?:  (app) =>   Promise<validData> | any;
+    dataCreate?: ((app: INestApplication) => Promise<any>) | (() => any);
+    dataUpdate?: (app: INestApplication) => Promise<validData> | any;
     expected: number;
 }
 
@@ -18,7 +19,8 @@ export enum invalid_caseTypeEnum {
 }
 
 export interface validData{
-    name:string;
-    code:string;
-    description:string;
+    id?:number;
+    name?:string;
+    code?:string;
+    description?:string;
 }

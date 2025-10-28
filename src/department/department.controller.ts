@@ -13,11 +13,14 @@ export class DepartmentController {
     }
  
   @Post()
-  @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
   async create(@Body() createDepartmentDto: CreateDepartmentDto) {
-    const userdata=this.getLoggedInUserData()
-    return await this.departmentService.create(createDepartmentDto,userdata);
+    return await this.departmentService.create(createDepartmentDto,this.getLoggedInUserData());
    
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateDepartmentDto: UpdateDepartmentDto) {
+    return this.departmentService.update(+id, updateDepartmentDto,this.getLoggedInUserData());
   }
 
   @Get()
@@ -27,14 +30,10 @@ export class DepartmentController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.departmentService.findOne(+id);
+    return this.departmentService.getDepartmentByID(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDepartmentDto: UpdateDepartmentDto) {
-    return this.departmentService.update(+id, updateDepartmentDto);
-  }
-
+  
   @Patch('deactivate:id')
   deactive(@Param('id') id: string) {
     return this.departmentService.deactivate(+id);

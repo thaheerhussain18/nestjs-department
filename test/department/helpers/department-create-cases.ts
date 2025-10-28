@@ -2,6 +2,7 @@
 import { FORM_VALIDATION } from '../../../src/utils/constants/regex';
 import { generateRandomDescription } from '../../utils/generate-random-description';
 import { generateRandomRegexString } from '../../utils/generate-random-regex-string';
+import { caseType, invalid_caseTypeEnum } from '../utility-interfaces';
 
 
 export function generate(isValid = true) {
@@ -27,9 +28,11 @@ export function generate(isValid = true) {
     };
 }
 
+
+
 export const generateInvalidCase = (
     field: keyof typeof FORM_VALIDATION,
-    type: 'min' | 'max' | 'regex' | 'missing',
+    invalid_case: invalid_caseTypeEnum,
 ) => {
     const valid = generate(true);
     const rule = FORM_VALIDATION[field];
@@ -37,7 +40,7 @@ export const generateInvalidCase = (
 
     let brokenValue = '';
 
-    switch (type) {
+    switch (invalid_case) {
         case 'min':
             brokenValue = generateRandomRegexString({
                 regex,
@@ -72,17 +75,19 @@ export const generateInvalidCase = (
 };
 
 
+
+
 export const departmentCreateTests = () => {
-    const cases = [
+    const cases:caseType[] = [
         { test_case_name: '✅ Valid data', data: () => generate(true), expected: 201 },
-        { test_case_name: '❌ Missing name', data: () => generateInvalidCase('NAME', 'missing'), expected: 400 },
-        { test_case_name: '❌ Missing code', data: () => generateInvalidCase('CODE', 'missing'), expected: 400 },
-        { test_case_name: '❌ Name too short', data: () => generateInvalidCase('NAME', 'min'), expected: 400 },
-        { test_case_name: '❌ Name too long', data: () => generateInvalidCase('NAME', 'max'), expected: 400 },
-        { test_case_name: '❌ Code too short', data: () => generateInvalidCase('CODE', 'min'), expected: 400 },
-        { test_case_name: '❌ Code too long', data: () => generateInvalidCase('CODE', 'max'), expected: 400 },
-        { test_case_name: '❌ Invalid name regex', data: () => generateInvalidCase('NAME', 'regex'), expected: 400 },
-        { test_case_name: '❌ Invalid code regex', data: () => generateInvalidCase('CODE', 'regex'), expected: 400 },
+        { test_case_name: '❌ Missing name', data: () => generateInvalidCase('NAME',invalid_caseTypeEnum.MISSING ), expected: 400 },
+        { test_case_name: '❌ Missing code', data: () => generateInvalidCase('CODE', invalid_caseTypeEnum.MISSING), expected: 400 },
+        { test_case_name: '❌ Name too short', data: () => generateInvalidCase('NAME', invalid_caseTypeEnum.MIN), expected: 400 },
+        { test_case_name: '❌ Name too long', data: () => generateInvalidCase('NAME', invalid_caseTypeEnum.MAX), expected: 400 },
+        { test_case_name: '❌ Code too short', data: () => generateInvalidCase('CODE', invalid_caseTypeEnum.MIN), expected: 400 },
+        { test_case_name: '❌ Code too long', data: () => generateInvalidCase('CODE', invalid_caseTypeEnum.MAX),expected:400 },
+        { test_case_name: '❌ Invalid name regex', data: () => generateInvalidCase('NAME', invalid_caseTypeEnum.REGEX), expected: 400 },
+        { test_case_name: '❌ Invalid code regex', data: () => generateInvalidCase('CODE', invalid_caseTypeEnum.REGEX), expected: 400 },
         { test_case_name: '❌ Empty all fields', data: () => ({ name: '', code: ''}), expected: 400 },
     ];
 

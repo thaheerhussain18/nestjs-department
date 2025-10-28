@@ -38,6 +38,8 @@ export class CreateDepartmentDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
+  @MinLength(3)
+  @MaxLength(1024)
   description:string
 
   

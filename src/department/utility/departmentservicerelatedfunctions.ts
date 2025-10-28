@@ -50,15 +50,12 @@ export class DepartmentServiceRelatedFunctions{
       }
   }
 
-   async logFunction({ action,department,userdata}:logParam) {
+   async logFunction({ action,department,userdata,PreviousData}:logParam) {
     try {
     let change_description="";
     switch (action) {
       case "Created":
         change_description = `Department Created Successfully`;
-        break;
-      case "Modified":
-        change_description = `Department  was modified.`;
         break;
       case "Activated":
         change_description = `Department  was activated.`;
@@ -68,6 +65,9 @@ export class DepartmentServiceRelatedFunctions{
         break;
       case "Download":
         change_description = `Department  was downloaded.`;
+        break;
+      case 'Modified':
+        change_description = `Department  was modified. Changes: ${this.getExistingChangesDescription(PreviousData,department)}`;
         break;
       default:
         change_description = "Unknown action.";
@@ -79,7 +79,7 @@ export class DepartmentServiceRelatedFunctions{
         data: {
           name: department.name,
           code: department.code,
-          license_id: department.license_id,
+          license_id: userdata.license_id,
           description: department.description,
           status: department.status,
           change_description: change_description,
@@ -98,5 +98,30 @@ export class DepartmentServiceRelatedFunctions{
     }
   }
 
+  getExistingChangesDescription(existing,updateDepartmentDto):string{
+    const { name, code, description } = updateDepartmentDto;
+    let changeDescription = '';
+    let changesDetected = false;
+
+    if (existing.name !== name) {
+      changesDetected = true;
+      changeDescription += `Name changed from ${existing.name} to ${name}. `;
+    }
+
+    if (existing.code !== code) {
+      changesDetected = true;
+      changeDescription += `Code changed from ${existing.code} to ${code}. `;
+    }
+
+    if (existing.description !== description) {
+      changesDetected = true;
+      changeDescription += `Description changed from ${existing.description} to ${description}. `;
+    }
+
+    console.log('Changes Detected:', changesDetected);
+    if (changesDetected) {
+      console.log('Change Description:', changeDescription);
+    }
+    return changeDescription;}
 
 }

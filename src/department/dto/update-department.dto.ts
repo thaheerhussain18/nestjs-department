@@ -5,53 +5,49 @@ import { ApiProperty } from '@nestjs/swagger';
 import { action } from 'generated/department';
 
 
-export class UpdateDepartmentDto  
-{
-    @IsNumber()
-    @IsNotEmpty()
-    modified_by_id:number
+export class UpdateDepartmentDto {
 
-    @IsOptional()
-     @IsString()
-      @IsNotEmpty()
-      @MinLength(3)
-      @MaxLength(50)
-       @Matches(/^[A-Za-z0-9][A-Za-z0-9 _\-\.'()&@+]*$/, {
-        message:
-          'Name must start with a letter or number, and contain only valid characters',
-      })
-      @ApiProperty()
-      name?:string
-    
-      @IsOptional()
-      @IsString()
-      @IsNotEmpty()
-      @MinLength(3)
-      @MaxLength(50)
-      @Matches(/^[A-Za-z0-9][A-Za-z0-9'_\-/\\]*$/, {
-        message:
-          'Code must start with a letter or number and contain only letters, numbers, and the characters \' - _ / \\ with no spaces.',
-      })
-      @ApiProperty()
-      code?:string
-    
-      @IsOptional()
-      @IsNumber()
-      @IsNotEmpty()
-      @ApiProperty()
-      license_id?:number 
-    
-      @IsOptional()
-      @IsString()
-      @IsNotEmpty()
-      @ApiProperty()
-      description?:string
 
-      @ApiProperty()
-      status:boolean
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(3)
+  @MaxLength(50)
+  @Matches(/^[A-Za-z0-9][A-Za-z0-9 _\-\.'()&@+]*$/, {
+    message:
+      'Name must start with a letter or number, and contain only valid characters',
+  })
+  @ApiProperty()
+  name?: string
 
-          
 
-    
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(3)
+  @MaxLength(50)
+  @Matches(/^[A-Za-z0-9][A-Za-z0-9'_\-/\\]*$/, {
+    message:
+      'Code must start with a letter or number and contain only letters, numbers, and the characters \' - _ / \\ with no spaces.',
+  })
+  @ApiProperty()
+  code?: string
+
+
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  @MinLength(3)
+  @MaxLength(1024)
+  description: string
+
+
+
+modified_on: Date;
+
+modified_by_id: number;
+
+
+
 
 }

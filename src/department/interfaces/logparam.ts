@@ -5,6 +5,6 @@ import { userData } from "./userdata.interface"
 export interface logParam{
         department:ResponseDto,
         action:action,
-        userdata:userData
-
+        userdata:userData,
+        PreviousData?:ResponseDto
       }

@@ -1,16 +1,16 @@
-import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
+import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { CreateDepartmentDto } from './dto/create-department.dto';
 import { UpdateDepartmentDto } from './dto/update-department.dto';
 import { PrismaService } from '../prismaservice';
-import { userData } from './interfaces/userdata.interface';
+import { userData } from './interfaces/department.types';
 import { ResponseDto } from './dto/responsedto';
 import { action, m_master_department } from '../../generated/department';
-import { logParam } from './interfaces/logparam';
+import { logParam } from './interfaces/department.types';
 import { DepartmentServiceRelatedFunctions } from './utility/department-service-utilities';
-import { ValidateUpdateData } from './interfaces/validate-update-data';
+import { ValidateUpdateData } from './interfaces/department.types';
 
-import { nameAndCodeCheckExistsParamsInterface } from './interfaces/name-code-check-data-interface';
-import { validateCreateData } from './interfaces/validate-create-data';
+import { nameAndCodeCheckExistsParamsInterface } from './interfaces/department.types';
+import { validateCreateData } from './interfaces/department.types';
 
 @Injectable()
 export class DepartmentService {
@@ -22,7 +22,7 @@ export class DepartmentService {
     try {
       let { name, code, description } = createDepartmentDto;
 
-      if (!name && !code && !description) throw new BadRequestException("Nothing to update");
+      if (!name && !code && !description) throw new ConflictException("Nothing to update");
       const createdata:validateCreateData=this.serviceRelatedFunctions.validateCreateData({ name, code, description });
       // console.log('post method');      
       await this.serviceRelatedFunctions.existingUserCheck(userdata)
@@ -57,7 +57,9 @@ export class DepartmentService {
 
     }
     catch (error) {
+      console.log(error.message);
       throw error
+      
     }
   }
 
@@ -68,10 +70,10 @@ export class DepartmentService {
       await this.serviceRelatedFunctions.existingUserCheck(userdata);//license and user check
       const existing = await this.getDepartmentByID(id);
       if (!existing) {
-        throw new BadRequestException(`Department with id ${id} not found`);
+        throw new ConflictException(`Department with id ${id} not found`);
       }
        const { name, code, description } = updateDepartmentDto;
-      if (!name && !code && !description) throw new BadRequestException("Nothing to update");
+      if (!name && !code && !description) throw new ConflictException("Nothing to update");
       const nameAndCodeCheckExistsParams:nameAndCodeCheckExistsParamsInterface = {name:name,code:code,license_id: userdata.license_id, department_id:id};
       await this.serviceRelatedFunctions.nameAndCodeCheckExitsUpdate(nameAndCodeCheckExistsParams);//name and code uniqueness check
      
@@ -102,7 +104,7 @@ export class DepartmentService {
     }
   }
   async getDepartmentByID(id: number) {
-    if (!id) throw new BadRequestException('Department ID is required');
+    if (!id) throw new ConflictException('Department ID is required');
 
     return (await this.prismaService.m_master_department.findFirst({ where: { id } }))
   }

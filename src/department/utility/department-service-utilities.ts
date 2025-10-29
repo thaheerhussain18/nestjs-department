@@ -1,12 +1,12 @@
 import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
 import { log } from "console";
 import { PrismaService } from "../../prismaservice";
-import { userData } from "../interfaces/userdata.interface";
-import { logParam } from "../interfaces/logparam";
-import { ValidateUpdateData } from "../interfaces/validate-update-data";
-import { nameAndCodeCheckExistsParamsInterface } from '../interfaces/name-code-check-data-interface';
+import { userData } from "../interfaces/department.types";
+import { logParam } from "../interfaces/department.types";
+import { ValidateUpdateData } from "../interfaces/department.types";
+import { nameAndCodeCheckExistsParamsInterface } from '../interfaces/department.types';
 import { m_master_department_log } from "generated/department";
-import { validateCreateData } from "../interfaces/validate-create-data";
+import { validateCreateData } from "../interfaces/department.types";
 @Injectable()
 export class DepartmentServiceRelatedFunctions {
 
@@ -41,7 +41,7 @@ export class DepartmentServiceRelatedFunctions {
       }
     }
     catch (error) {
-      throw error
+      throw new ConflictException(error)
     }
   }
 
@@ -84,7 +84,7 @@ export class DepartmentServiceRelatedFunctions {
       }
     }
     catch (error) {
-      throw error
+      throw new ConflictException(error)
     }
   }
 
@@ -147,7 +147,7 @@ export class DepartmentServiceRelatedFunctions {
       }
     }
     catch (error) {
-      throw error
+     throw new ConflictException(error)
     }
   }
 

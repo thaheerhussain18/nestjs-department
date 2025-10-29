@@ -4,10 +4,11 @@ import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 import { AppModule } from '../../../src/app.module';
 import { departmentCreateTests } from './department-create-cases';
-import {generate} from '../helpers/name-code-description-generator';
+import {generate} from '../helpers/department-test-helper';
 import { caseType } from '../utility-interfaces';
-import { intiFun } from '../helpers/test-app-init';
-import { postDepartment } from '../helpers/post-create';
+import { intiFun } from '../../utils/test-module-app-init';
+import { CreateDepartmentTest } from '../helpers/department-test-helper';
+import { RESPONSE_CODES } from '../../../src/utils/constants/regex';
 
 
 const cases = departmentCreateTests();
@@ -25,10 +26,10 @@ describe('Department Create E2E', () => {
             console.log(testcase.test_case_name)
             const dto=typeof testcase.dataCreate === 'function' ? await testcase.dataCreate(app) : testcase.dataCreate;
 
-            const res = await postDepartment(app,dto);
-            console.log(res.status,res.body);
-            if (testcase.expected === 201) expect(res.status).toBe(201);
-            else {expect(res.status).toBeGreaterThanOrEqual(testcase.expected);
+            const res = await CreateDepartmentTest(app,dto);
+            // console.log(res.status,res.body);
+            if (testcase.expected === 201) expect(res.status).toBe(RESPONSE_CODES.CREATED);
+            else {expect(res.status).toBe(testcase.expected);
             }
         });
     });

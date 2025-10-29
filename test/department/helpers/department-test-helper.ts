@@ -1,10 +1,9 @@
 import { FORM_VALIDATION } from "../../../src/utils/constants/regex";
+import { invalid_caseTypeEnum, validData } from "../utility-interfaces";
 import { generateRandomRegexString } from "../../../test/utils/generate-random-regex-string";
-import { invalid_caseTypeEnum } from "../utility-interfaces";
-import { generate } from "./name-code-description-generator";
-
-
-
+import { INestApplication } from "@nestjs/common";
+import request from "supertest";
+import { generateRandomDescription } from "../../../test/utils/generate-random-description";
 export const generateInvalidCase = (
     field: keyof typeof FORM_VALIDATION,
     invalid_case: invalid_caseTypeEnum,
@@ -48,3 +47,33 @@ export const generateInvalidCase = (
     // console.log(valid+"--valid", field+"--field", type+"--type", brokenValue+"-----------------------------------------------");
     return { ...valid, [field.toLowerCase()]: brokenValue };
 };
+
+export async function  CreateDepartmentTest(app: INestApplication,payload:validData) {
+
+    return await request(app.getHttpServer())
+        .post('/department')
+        .send(payload);
+}
+
+export function generate(isValid = true) {
+    return {
+        name: generateRandomRegexString({
+            regex: FORM_VALIDATION.NAME.REGEX,
+            minLength: FORM_VALIDATION.NAME.MIN_LENGTH,
+            maxLength: FORM_VALIDATION.NAME.MAX_LENGTH,
+            isValid,
+        }),
+        code: generateRandomRegexString({
+            regex: FORM_VALIDATION.CODE.REGEX,
+            minLength: FORM_VALIDATION.CODE.MIN_LENGTH,
+            maxLength: FORM_VALIDATION.CODE.MAX_LENGTH,
+            isValid,
+        }),
+        description: isValid
+            ? generateRandomDescription(
+                FORM_VALIDATION.DESCRIPTION.MIN_LENGTH,
+                FORM_VALIDATION.DESCRIPTION.MAX_LENGTH,
+            )
+            : '',
+    };
+}

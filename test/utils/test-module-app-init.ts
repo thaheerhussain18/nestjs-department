@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { AppModule } from "../../../src/app.module";
+import { AppModule } from "../../src/app.module";
 
 export async function intiFun() {
     const moduleFixture: TestingModule = await Test.createTestingModule({

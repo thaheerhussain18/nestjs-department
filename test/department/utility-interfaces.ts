@@ -1,10 +1,12 @@
 import { INestApplication } from "@nestjs/common";
+import { RESPONSE_CODES_PROPS } from "../../src/utils/constants/regex";
+
 
 export interface caseType {
     test_case_name: string;
     dataCreate?: ((app: INestApplication) => Promise<any>) | (() => any);
     dataUpdate?: (app: INestApplication) => Promise<validData> | any;
-    expected: number;
+    expected: RESPONSE_CODES_PROPS;
 }
 
 

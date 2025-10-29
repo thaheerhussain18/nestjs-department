@@ -1,85 +1,86 @@
 import { caseType, invalid_caseTypeEnum } from "../utility-interfaces";
-import { generateInvalidCase } from "../helpers/generate-invalid-case";
-import { generate } from "../helpers/name-code-description-generator";
-import request from "supertest";
-import { INestApplication } from "@nestjs/common";
-import { postDepartment } from "../helpers/post-create";
+import { generateInvalidCase } from "../helpers/department-test-helper";
+import { generate } from "../helpers/department-test-helper";
+import { CreateDepartmentTest } from "../helpers/department-test-helper";
+// import { RESPONSE_CODES } from ".src/utils/constants/regex";
+import {  ACTIONS, FEATURE, RESPONSE_CODES } from "../../../src/utils/constants/regex";
+// RESPONSE_CODES
 export const departmentCreateTests = () => {
 
     const cases: caseType[] = [
         {
-            test_case_name: '✅ 1.Valid data',
+            test_case_name: `${FEATURE.DEPARTMENT}-${ACTIONS.CREATE}-01 Valid data`,
             dataCreate: () => generate(true),
-            expected: 201
+            expected:RESPONSE_CODES.SUCCESS, // RESPONSE_CODES.CREATED
         },
         {
-            test_case_name: '❌ 2.Missing name',
+            test_case_name: `${FEATURE.DEPARTMENT}-${ACTIONS.CREATE}-02  Missing name`,
             dataCreate: () => generateInvalidCase('NAME', invalid_caseTypeEnum.MISSING),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 3.Missing code',
+            test_case_name: `${FEATURE.DEPARTMENT}-${ACTIONS.CREATE}-03 Missing code`,
             dataCreate: () => generateInvalidCase('CODE', invalid_caseTypeEnum.MISSING),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 4.Name too short',
+            test_case_name: `${FEATURE.DEPARTMENT}-${ACTIONS.CREATE}-01 -04.Name too short'`,
             dataCreate: () => generateInvalidCase('NAME', invalid_caseTypeEnum.MIN),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 5.Name too long',
+            test_case_name: `${FEATURE.DEPARTMENT}-${ACTIONS.CREATE}' -05.Name too long'`,
             dataCreate: () => generateInvalidCase('NAME', invalid_caseTypeEnum.MAX),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 6.Code too short',
+            test_case_name: `${FEATURE.DEPARTMENT}-${ACTIONS.CREATE}' -06.Code too short'`,
             dataCreate: () => generateInvalidCase('CODE', invalid_caseTypeEnum.MIN),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 7.Code too long',
+            test_case_name: ' -07.Code too long',
             dataCreate: () => generateInvalidCase('CODE', invalid_caseTypeEnum.MAX),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 8.Invalid name regex',
+            test_case_name: ' -08.Invalid name regex',
             dataCreate: () => generateInvalidCase('NAME', invalid_caseTypeEnum.REGEX),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 9.Invalid code regex',
+            test_case_name: ' -09.Invalid code regex',
             dataCreate: () => generateInvalidCase('CODE', invalid_caseTypeEnum.REGEX),
-            expected: 400
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 10.Empty all fields',
-            dataCreate: () => ({ name: '', code: '' }), expected: 400
+            test_case_name: ' -10.Empty all fields',
+            dataCreate: () => ({ name: '', code: '' }), expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌11. Duplicate name inside same license',
+            test_case_name: '-11. Duplicate name inside same license',
             dataCreate: async (app) => {
-                const created = await postDepartment(app, generate(true));
+                const created = await CreateDepartmentTest(app, generate(true));
 
-                return { name: created.body.name, code: generate(true).code,description:generate(true).description  };
+                return { name: created.body.name, code: generate(true).code,description:generate(true).description };
             },
-            expected: 409
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 12.Duplicate code inside same license',
+            test_case_name: ' -12.Duplicate code inside same license',
             dataCreate: async (app) => {
-                const created = await postDepartment(app, generate(true));
+                const created = await CreateDepartmentTest(app, generate(true));
                 return { name: generate(true).name, code: created.body.code ,description:generate(true).description };
             },
-            expected: 409
+            expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         },
         {
-            test_case_name: '❌ 13.should fail when department name & code already exists',
+            test_case_name: ' 13.should fail when department name & code already exists',
             dataCreate: async (app) => {
                 const payload = generate(true);
-                await postDepartment(app, payload);
+                await CreateDepartmentTest(app, payload);
                 return payload;
-            }, expected: 409
+            }, expected: RESPONSE_CODES.CONFLICT_ERROR_CODE
         }
 
     ];

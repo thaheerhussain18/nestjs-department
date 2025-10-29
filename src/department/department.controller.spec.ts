@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { DepartmentController } from './department.controller';
 import { DepartmentService } from './department.service';
 import { PrismaService } from '../prismaservice';
-import { DepartmentServiceRelatedFunctions } from './utility/departmentservicerelatedfunctions';
+import { DepartmentServiceRelatedFunctions } from './utility/department-service-utilities';
 import { DepartmentModule } from './department.module';
 
 import { ValidationPipe } from '@nestjs/common';

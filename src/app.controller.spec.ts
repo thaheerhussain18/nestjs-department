@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DepartmentController } from './department/department.controller';
 import { DepartmentService } from './department/department.service';
-import { DepartmentServiceRelatedFunctions } from './department/utility/departmentservicerelatedfunctions';
+import { DepartmentServiceRelatedFunctions } from './department/utility/department-service-utilities';
 import { PrismaService } from './prismaservice';
 import { DepartmentModule } from './department/department.module';
 

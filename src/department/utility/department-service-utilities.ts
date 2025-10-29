@@ -4,34 +4,40 @@ import { PrismaService } from "../../prismaservice";
 import { userData } from "../interfaces/userdata.interface";
 import { logParam } from "../interfaces/logparam";
 import { ValidateUpdateData } from "../interfaces/validate-update-data";
-
+import { nameAndCodeCheckExistsParamsInterface } from '../interfaces/name-code-check-data-interface';
+import { m_master_department_log } from "generated/department";
+import { validateCreateData } from "../interfaces/validate-create-data";
 @Injectable()
 export class DepartmentServiceRelatedFunctions {
 
   constructor(private prismaService: PrismaService) { }
-  async nameAndCodeCheckExits(name, code, license_id) {
+  async nameAndCodeCheckExits(data: nameAndCodeCheckExistsParamsInterface) {
     try {
-      const existingname = await this.prismaService.m_master_department.findFirst({
-        where: {
-          license_id: license_id,
-          name: name
-        },
-      });
-      if (existingname) {
-        throw new ConflictException(
-          `Department name  already exists within license ${license_id}`,
-        );
+      if (data.name !== undefined) {
+        const existingname = await this.prismaService.m_master_department.findFirst({
+          where: {
+            license_id: data.license_id,
+            name: data.name
+          },
+        });
+        if (existingname) {
+          throw new ConflictException(
+            `Department name  already exists within license ${data.license_id}`,
+          );
+        }
       }
-      const existingcode = await this.prismaService.m_master_department.findFirst({
-        where: {
-          license_id: license_id,
-          code: code
-        },
-      });
-      if (existingcode) {
-        throw new ConflictException(
-          `Department  code already exists within license ${license_id}`,
-        );
+      if (data.code !== undefined) {
+        const existingcode = await this.prismaService.m_master_department.findFirst({
+          where: {
+            license_id: data.license_id,
+            code: data.code
+          },
+        });
+        if (existingcode) {
+          throw new ConflictException(
+            `Department  code already exists within license ${data.license_id}`,
+          );
+        }
       }
     }
     catch (error) {
@@ -39,39 +45,40 @@ export class DepartmentServiceRelatedFunctions {
     }
   }
 
-  async nameAndCodeCheckExitsUpdate(name, code, license_id, department_id) {
+  async nameAndCodeCheckExitsUpdate(data: nameAndCodeCheckExistsParamsInterface) {
     try {
-      if (name !== undefined) {
+      if (data.name !== undefined) {
         const existingname = await this.prismaService.m_master_department.findFirst({
           where: {
-            license_id: license_id,
-            name: name,
+            license_id: data.license_id,
+            name: data.name,
             NOT: {
-              id: department_id, // Ensure the current department belongs to the user attempting the update
+              id: data.department_id,
             },
-          },
+          }
+          ,
         });
 
         if (existingname) {
           throw new ConflictException(
-            `Department name  already exists within license ${license_id}`,
+            `Department name  already exists within license ${data.license_id}`,
           );
         }
       }
 
-      if (code !== undefined) {
+      if (data.code !== undefined) {
         const existingcode = await this.prismaService.m_master_department.findFirst({
           where: {
-            license_id: license_id,
-            code: code,
+            license_id: data.license_id,
+            code: data.code,
             NOT: {
-              id: department_id, // Ensure the current department belongs to the user attempting the update
+              id: data.department_id,
             },
           },
         });
         if (existingcode) {
           throw new ConflictException(
-            `Department  code already exists within license ${license_id}`,
+            `Department  code already exists within license ${data.license_id}`,
           );
         }
       }
@@ -121,7 +128,7 @@ export class DepartmentServiceRelatedFunctions {
       }
 
 
-      const logged = await this.prismaService.m_master_department_log.create({
+      const logged:m_master_department_log = await this.prismaService.m_master_department_log.create({
         data: {
           name: department.name,
           code: department.code,
@@ -171,7 +178,7 @@ export class DepartmentServiceRelatedFunctions {
     return changeDescription;
   }
 
-  validateUpdateData(updatedata: { name?: string, code?: string, description?: string },modify_by_id:number):ValidateUpdateData {
+  validateUpdateData(updatedata: { name?: string, code?: string, description?: string }, modify_by_id: number): ValidateUpdateData {
 
     const { name, code, description } = updatedata;
     if (name !== undefined) {
@@ -184,11 +191,23 @@ export class DepartmentServiceRelatedFunctions {
       updatedata.description = description;
     }
 
-    return {...updatedata, modified_on: new Date(), modified_by_id: modify_by_id  }; 
+    return { ...updatedata, modified_on: new Date(), modified_by_id: modify_by_id };
 
 
 
   }
+  validateCreateData(createdata: { name: string, code: string, description: string }): validateCreateData {
+
+    const { name, code, description } = createdata;
+     if (name !== undefined) {
+      createdata.name = name;
+    }
+    if (code !== undefined) {
+      createdata.code = code;
+    }
+    if (description !== undefined) {
+      createdata.description = description;
+    }
+    return createdata;}
 
 }
-

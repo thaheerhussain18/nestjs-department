@@ -27,13 +27,11 @@ describe('Department Update E2E (PATCH /department/:id)', () => {
       delete payload.id;
 
       const res = await request(app.getHttpServer()).patch(`/department/${id}`).send(payload);
-
-      // console.log('Payload:', payload);
-      // console.log(testCase.test_case_name, '=>', 'Status:', res.status, 'Response:', res.body);
       if (testCase.expected === 200) {
         expect(res.status).toBe(200);
       } else {
-        expect(res.status).toBeGreaterThanOrEqual(400);
+        console.log(res.status, res.body);
+        expect(res.status).toBe(testCase.expected);
       }
     });
   });

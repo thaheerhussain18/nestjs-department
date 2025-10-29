@@ -2,7 +2,7 @@ import { action } from "generated/department"
 
 export interface UpdateLog{
 
-     name:string
+          name:string
           code: string
           license_id: number
           description: string

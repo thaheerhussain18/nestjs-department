@@ -7,6 +7,7 @@ import { departmentCreateTests } from './department-create-cases';
 import {generate} from '../helpers/name-code-description-generator';
 import { caseType } from '../utility-interfaces';
 import { intiFun } from '../helpers/test-app-init';
+import { postDepartment } from '../helpers/post-create';
 
 
 const cases = departmentCreateTests();
@@ -20,15 +21,14 @@ describe('Department Create E2E', () => {
     });
 
     describe('Auto-generated validation tests', () => {
-        it.each(cases)('running test', async (t: caseType) => {
-            console.log(t.test_case_name)
-            const dto=typeof t.dataCreate === 'function' ? await t.dataCreate(app) : t.dataCreate;
+        it.each(cases)('%s', async (testcase: caseType) => {
+            console.log(testcase.test_case_name)
+            const dto=typeof testcase.dataCreate === 'function' ? await testcase.dataCreate(app) : testcase.dataCreate;
 
-            const res = await request(app.getHttpServer()).post('/department').send(dto);
-            // console.log(res.body)
-            if (t.expected === 201) expect(res.status).toBe(201);
-            else {expect(res.status).toBeGreaterThanOrEqual(400);
-                // console.log(res.status)
+            const res = await postDepartment(app,dto);
+            console.log(res.status,res.body);
+            if (testcase.expected === 201) expect(res.status).toBe(201);
+            else {expect(res.status).toBeGreaterThanOrEqual(testcase.expected);
             }
         });
     });

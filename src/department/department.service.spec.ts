@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DepartmentService } from './department.service';
 import { PrismaService } from '../prismaservice';
-import { DepartmentServiceRelatedFunctions } from './utility/departmentservicerelatedfunctions';
+import { DepartmentServiceRelatedFunctions } from './utility/department-service-utilities';
 import { ConflictException, NotFoundException } from '@nestjs/common';
 
 describe('DepartmentService', () => {

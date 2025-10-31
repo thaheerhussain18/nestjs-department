@@ -102,7 +102,7 @@ export class DepartmentService {
       };
       this.serviceRelatedFunctions.logFunction(logParams);
 
-      // console.log(updatedDepartment);
+      console.log(updatedDepartment);
 
       return { updatedDepartment };
     } catch (error) {

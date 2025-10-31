@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, ConflictException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, ConflictException, Query } from '@nestjs/common';
 import { DepartmentService } from './department.service';
 import { CreateDepartmentDto } from './dto/create-department.dto';
 import { UpdateDepartmentDto } from './dto/update-department.dto';
+import { GlobalFindAll } from './interfaces/department.types';
+import { ApiBody, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @Controller('department')
 export class DepartmentController {
@@ -13,7 +15,7 @@ export class DepartmentController {
     }
  
   @Post()
-  @UsePipes(new ValidationPipe({  exceptionFactory: (errors) => new ConflictException(errors),whitelist: true, forbidNonWhitelisted: true }))
+  @UsePipes(new ValidationPipe({ exceptionFactory: (errors) => new ConflictException(errors), whitelist: true, forbidNonWhitelisted: true }))
   async create(@Body() createDepartmentDto: CreateDepartmentDto) {
     return await this.departmentService.create(createDepartmentDto,this.getLoggedInUserData());
    
@@ -26,8 +28,13 @@ export class DepartmentController {
   }
 
   @Get()
-  findAll() {
-    return this.departmentService.findAll();
+  @ApiQuery({ name: 'search', required: false })
+  @ApiQuery({ name: 'status', required: false })
+  @ApiQuery({ name: 'limit', required: false })
+  // @ApiBody({ })
+  // @ApiTags('Department Find All')
+  findAll(@Query('search')  search?: string,@Query('status') status?:string,@Query('limit') limit?:string) {
+    return this.departmentService.departmentFindAll(search,status,limit);
   }
 
   @Get(':id')

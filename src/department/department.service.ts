@@ -2,20 +2,21 @@ import { Injectable, NotFoundException, ConflictException } from '@nestjs/common
 import { CreateDepartmentDto } from './dto/create-department.dto';
 import { UpdateDepartmentDto } from './dto/update-department.dto';
 import { PrismaService } from '../prismaservice';
-import { userData } from './interfaces/department.types';
+import { GlobalFindAll, userData } from './interfaces/department.types';
 import { ResponseDto } from './dto/responsedto';
-import { action, m_master_department } from '../../generated/department';
+import { action, m_master_department, Prisma } from '../../generated/department';
 import { logParam } from './interfaces/department.types';
 import { DepartmentServiceRelatedFunctions } from './utility/department-service-utilities';
 import { ValidateUpdateData } from './interfaces/department.types';
 
 import { nameAndCodeCheckExistsParamsInterface } from './interfaces/department.types';
 import { validateCreateData } from './interfaces/department.types';
+import { stat } from 'fs';
 
 @Injectable()
 export class DepartmentService {
   constructor(private prismaService: PrismaService,
-    
+
     private serviceRelatedFunctions: DepartmentServiceRelatedFunctions
   ) { }
   async create(createDepartmentDto: CreateDepartmentDto, userdata: userData) {
@@ -23,10 +24,10 @@ export class DepartmentService {
       let { name, code, description } = createDepartmentDto;
 
       if (!name && !code && !description) throw new ConflictException("Nothing to update");
-      const createdata:validateCreateData=this.serviceRelatedFunctions.validateCreateData({ name, code, description });
+      const createdata: validateCreateData = this.serviceRelatedFunctions.validateCreateData({ name, code, description });
       // console.log('post method');      
       await this.serviceRelatedFunctions.existingUserCheck(userdata)
-      const nameAndCodeCheckExistsParams:nameAndCodeCheckExistsParamsInterface = {name:name,code:code,license_id: userdata.license_id};
+      const nameAndCodeCheckExistsParams: nameAndCodeCheckExistsParamsInterface = { name: name, code: code, license_id: userdata.license_id };
       await this.serviceRelatedFunctions.nameAndCodeCheckExits(nameAndCodeCheckExistsParams)
 
 
@@ -59,10 +60,15 @@ export class DepartmentService {
     catch (error) {
       console.log(error.message);
       throw error
-      
+
     }
   }
 
+  async getDepartmentByID(id: number) {
+    if (!id) throw new ConflictException('Department ID is required');
+
+    return (await this.prismaService.m_master_department.findFirst({ where: { id } }))
+  }
 
   async update(id: number, updateDepartmentDto: UpdateDepartmentDto, userdata: userData) {
     try {
@@ -72,12 +78,12 @@ export class DepartmentService {
       if (!existing) {
         throw new ConflictException(`Department with id ${id} not found`);
       }
-       const { name, code, description } = updateDepartmentDto;
+      const { name, code, description } = updateDepartmentDto;
       if (!name && !code && !description) throw new ConflictException("Nothing to update");
-      const nameAndCodeCheckExistsParams:nameAndCodeCheckExistsParamsInterface = {name:name,code:code,license_id: userdata.license_id, department_id:id};
+      const nameAndCodeCheckExistsParams: nameAndCodeCheckExistsParamsInterface = { name: name, code: code, license_id: userdata.license_id, department_id: id };
       await this.serviceRelatedFunctions.nameAndCodeCheckExitsUpdate(nameAndCodeCheckExistsParams);//name and code uniqueness check
-     
-     
+
+
       const updatedata: ValidateUpdateData = this.serviceRelatedFunctions.validateUpdateData({ name, code, description }, userdata.user_id)
       // console.log('Update Data:', updatedata);
 
@@ -103,15 +109,63 @@ export class DepartmentService {
       throw error;
     }
   }
-  async getDepartmentByID(id: number) {
-    if (!id) throw new ConflictException('Department ID is required');
-
-    return (await this.prismaService.m_master_department.findFirst({ where: { id } }))
-  }
 
 
-  async findAll() {
-    return {}
+  async departmentFindAll(search?: string,status?,limit?) {
+    search = search || '';
+    limit=limit || 10
+    // const status=1
+    const data: GlobalFindAll = {
+      name: '',
+      code: `P5xUr9jYaHRLqPwEnnP_3`,
+      description: '',
+      created_by_id: 0,
+      modified_by_id: 2
+    };
+    if(status==1){
+      status=true
+    }
+    else{
+      status=false
+    }
+    console.log(status)
+    // const limit = 100;
+    const { name, code, description} = data;
+
+    // const individualFiltersQuery = ` name LIKE  '%${name}%' and code LIKE '%${code}%' and description LIKE '%${description}%' `;
+    const fullSearchQuery= `SELECT * FROM m_master_department`
+     const globalSearchQuery = `  name LIKE '%${search}%' OR code LIKE '%${search}%' OR description LIKE '%${search}%'`;
+    const individualFiltersQuery = `name LIKE  '%${name}%' AND code LIKE '%${code}%' AND description LIKE '%${description}%'`;
+    const statusFilter = status ? `AND status = 'true'` : `AND status = 'false'`;
+    //global search
+
+    // console.log('Individual Filters Query:', individualFiltersQuery);
+    // const resdata = await this.prismaService.m_master_department.findMany({
+    //   where: {
+    //     AND: [
+    //       { name: { contains: name } },
+    //       { code: { startsWith: code } },
+    //       { description: { contains: description } },
+    //       { created_by_id: created_by_id },
+    //       { modified_by_id: modified_by_id }
+    //   ]
+    //   }
+    // })
+    //  await this.prismaService.$queryRaw`SELECT * FROM m_master_department `
+    
+    
+
+      const query = `${fullSearchQuery} where ${globalSearchQuery} OR (${individualFiltersQuery}) ${statusFilter} LIMIT ${limit} `;
+      console.log(query)
+       const departments = await this.prismaService.$queryRaw(Prisma.raw(query));
+    // const globalSearchQuery = `SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`
+    // console.log(globalSearchQuery)
+    // return this.prismaService.$queryRaw(Prisma.raw(`${globalSearchQuery} or (${individualFiltersQuery}) limit ${limit}`));
+    return departments
+    // const query=`SELECT * FROM m_master_department WHERE name LIKE  '%'${userinput}'%' OR code LIKE '%'${userinput}'%' OR description LIKE '%'${userinput}'%'`
+    //  return await this.prismaService.$queryRaw`SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`
+
+
   }
   async deactivate(id: number) {
     return {}

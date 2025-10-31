@@ -150,3 +150,87 @@ const existing = await this.prismaService.m_master_department.findUnique({ where
 
     await expect(service.create(createDepartmentDto,userdata)).rejects.toThrow("Department already exists")
   })
+
+  
+async departmentFindAll1(
+  userInput: string = '',
+  page: number = 1,
+  limit: number = 20,
+  filters ?: {
+    name?: string;
+    code?: string;
+    description?: string;
+    created_by_id?: number;
+    modified_by_id?: number;
+    status?: string;
+  },
+) {
+  const offset = (page - 1) * limit;
+
+  // Base query
+  let baseQuery = `
+    SELECT 
+      d.*,
+      (SELECT name FROM m_user u WHERE u.id = d.created_by_id) AS created_by_name,
+      (SELECT email FROM m_user u WHERE u.id = d.created_by_id) AS created_by_email,
+      (SELECT name FROM m_user u WHERE u.id = d.modified_by_id) AS modified_by_name,
+      (SELECT email FROM m_user u WHERE u.id = d.modified_by_id) AS modified_by_email
+    FROM m_master_department d
+    WHERE 1=1
+  `;
+
+  const params: any[] = [];
+
+  // Global search
+  if (userInput) {
+    baseQuery += ` AND (d.name LIKE ? OR d.code LIKE ? OR d.description LIKE ?)`;
+    params.push(`%${userInput}%`, `%${userInput}%`, `%${userInput}%`);
+  }
+
+  // Individual filters
+  if (filters?.name) {
+    baseQuery += ` AND d.name LIKE ?`;
+    params.push(`%${filters.name}%`);
+  }
+  if (filters?.code) {
+    baseQuery += ` AND d.code LIKE ?`;
+    params.push(`%${filters.code}%`);
+  }
+  if (filters?.description) {
+    baseQuery += ` AND d.description LIKE ?`;
+    params.push(`%${filters.description}%`);
+  }
+  if (filters?.created_by_id) {
+    baseQuery += ` AND d.created_by_id = ?`;
+    params.push(filters.created_by_id);
+  }
+  if (filters?.modified_by_id) {
+    baseQuery += ` AND d.modified_by_id = ?`;
+    params.push(filters.modified_by_id);
+  }
+  if (filters?.status) {
+    baseQuery += ` AND d.status = ?`;
+    params.push(filters.status);
+  }
+
+  // Count query
+  const countQuery = `
+    SELECT COUNT(*) as total FROM (${baseQuery}) as total_rows
+  `;
+  const countResult = await this.prismaService.$queryRawUnsafe<{ total: number }[]>(countQuery, ...params);
+  const total = countResult?.[0]?.total || 0;
+
+  // Pagination
+  baseQuery += ` ORDER BY d.id DESC LIMIT ? OFFSET ?`;
+  params.push(limit, offset);
+
+  const data = await this.prismaService.$queryRawUnsafe(baseQuery, ...params);
+
+  return {
+    page,
+    limit,
+    total,
+    totalPages: Math.ceil(total / limit),
+    data,
+  };
+}

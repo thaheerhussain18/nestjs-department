@@ -117,7 +117,7 @@ export class DepartmentService {
     // const status=1
     const data: GlobalFindAll = {
       name: '',
-      code: `P5xUr9jYaHRLqPwEnnP_3`,
+      code: ``,
       description: '',
       created_by_id: 0,
       modified_by_id: 2
@@ -131,12 +131,11 @@ export class DepartmentService {
     console.log(status)
     // const limit = 100;
     const { name, code, description} = data;
-
+//username with id createdby,modifiedby 
     // const individualFiltersQuery = ` name LIKE  '%${name}%' and code LIKE '%${code}%' and description LIKE '%${description}%' `;
     const fullSearchQuery= `SELECT * FROM m_master_department`
-     const globalSearchQuery = `  name LIKE '%${search}%' OR code LIKE '%${search}%' OR description LIKE '%${search}%'`;
-    const individualFiltersQuery = `name LIKE  '%${name}%' AND code LIKE '%${code}%' AND description LIKE '%${description}%'`;
-    const statusFilter = status ? `AND status = 'true'` : `AND status = 'false'`;
+    const individualFiltersQuery = `name LIKE  '%${name}%' OR code LIKE '%${code}%' OR description LIKE '%${description}%'`;
+    const statusFilter = status ? `AND status = 'true'` : ``
     //global search
 
     // console.log('Individual Filters Query:', individualFiltersQuery);
@@ -154,8 +153,9 @@ export class DepartmentService {
     //  await this.prismaService.$queryRaw`SELECT * FROM m_master_department `
     
     
+    
 
-      const query = `${fullSearchQuery} where ${globalSearchQuery} OR (${individualFiltersQuery}) ${statusFilter} LIMIT ${limit} `;
+      const query = `${fullSearchQuery} where  (${individualFiltersQuery}) ${statusFilter} LIMIT ${limit} `;
       console.log(query)
        const departments = await this.prismaService.$queryRaw(Prisma.raw(query));
     // const globalSearchQuery = `SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`

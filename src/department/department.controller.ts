@@ -11,7 +11,7 @@ export class DepartmentController {
  
  
   getLoggedInUserData(){
-      return {user_id:1,license_id:1};
+      return {user_id:4,license_id:4};
     }
  
   @Post()

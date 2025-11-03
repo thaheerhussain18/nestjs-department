@@ -19,8 +19,6 @@ model user_credentials{
   password String 
   license_id Int 
   user_information user_information?
-
-  
 }
 
 model user_information{
@@ -30,11 +28,8 @@ model user_information{
   license_id Int 
   credential_id Int @unique
   user_credential user_credentials  @relation(fields: [credential_id],references: [id])
-
   c_master_department m_master_department[] @relation("created_master")
   m_master_department m_master_department[] @relation("modified_master")
-
-
   m_master_department_log m_master_department_log[]
 }
 

@@ -18,7 +18,7 @@ describe('Department Update E2E (PATCH /department/:id)', () => {
 
   describe('Auto-generated update validation tests', () => {
     it.each(cases)('%s', async (testCase: caseType) => {
-      console.log('Testcase:', testCase.test_case_name);
+      // console.log('Testcase:', testCase.test_case_name);
       const data = typeof testCase.dataUpdate === 'function' ? await testCase.dataUpdate(app) : testCase.dataUpdate;
 
       const id:number = data.id;
@@ -33,6 +33,7 @@ describe('Department Update E2E (PATCH /department/:id)', () => {
         expect(res.status).toBe(testCase.expected);
       }
     });
+    expect(1+2).toBe(3)
   });
 
   afterAll(async () => {

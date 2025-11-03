@@ -9,7 +9,7 @@ export function generateRandomDescription(
   maxLength 
 ): string {
   const words = [
-    'Candy', 'Manufacturing', 'Department', 'Operations', 'Team', 'Production',
+    'Candy', 'ManufacturingDepartment', 'Operations', 'Team', 'Production',
     'Quality', 'Control', 'Research', 'Development', 'Marketing', 'Engineering',
     'Logistics', 'Packaging', 'Innovation', 'Strategy', 'Support', 'Customer',
     'Service', 'Process', 'Improvement', 'Automation', 'Efficiency', 'Safety',

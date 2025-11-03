@@ -11,7 +11,7 @@ export class DepartmentController {
  
  
   getLoggedInUserData(){
-      return {user_id:4,license_id:4};
+      return {user_id:3,license_id:2};
     }
  
   @Post()
@@ -31,10 +31,14 @@ export class DepartmentController {
   @ApiQuery({ name: 'search', required: false })
   @ApiQuery({ name: 'status', required: false })
   @ApiQuery({ name: 'limit', required: false })
+  @ApiQuery({name:'name',required:false})
+  @ApiQuery({name:'code',required:false})
+  @ApiQuery({name:'description',required:false})
   // @ApiBody({ })
   // @ApiTags('Department Find All')
-  findAll(@Query('search')  search?: string,@Query('status') status?:string,@Query('limit') limit?:string) {
-    return this.departmentService.departmentFindAll(search,status,limit);
+  findAll(@Query('search')  search?: string,@Query('status') status?:string,@Query('limit') limit?:string,@Query('name') name?,@Query('code') code?,@Query('description') description?) {
+    
+    return this.departmentService.departmentFindAll(search,status,limit,name,code,description);
   }
 
   @Get(':id')

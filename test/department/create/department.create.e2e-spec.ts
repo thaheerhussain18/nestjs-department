@@ -23,7 +23,7 @@ describe('Department Create E2E', () => {
 
     describe('Auto-generated validation tests', () => {
         it.each(cases)('%s', async (testcase: caseType) => {
-            console.log(testcase.test_case_name)
+            // console.log(testcase.test_case_name)
             const dto=typeof testcase.dataCreate === 'function' ? await testcase.dataCreate(app) : testcase.dataCreate;
 
             const res = await CreateDepartmentTest(app,dto);

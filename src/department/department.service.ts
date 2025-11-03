@@ -102,7 +102,7 @@ export class DepartmentService {
       };
       this.serviceRelatedFunctions.logFunction(logParams);
 
-      console.log(updatedDepartment);
+   
 
       return { updatedDepartment };
     } catch (error) {
@@ -111,31 +111,48 @@ export class DepartmentService {
   }
 
 
-  async departmentFindAll(search?: string,status?,limit?) {
+  async departmentFindAll(search?: string,status?:string,limit?,name?,code?,description?) {
     search = search || '';
     limit=limit || 10
+    name=name || ``
+    code = code || ``
+    description = description || ``
+    console.log(search,status,limit,name,code,description)
+    status=status || `1`
     // const status=1
-    const data: GlobalFindAll = {
-      name: '',
-      code: ``,
-      description: '',
-      created_by_id: 0,
-      modified_by_id: 2
-    };
-    if(status==1){
-      status=true
+    // const data: GlobalFindAll = {
+    //   name: '',
+    //   code: ``,
+    //   description: '',
+    //   created_by_id: 0,
+    //   modified_by_id: 2
+    // };
+    
+   if(status.length>2){
+    status=`IN(1,0)`
+   }
+   
+     if(status==`1`){
+      
+      status=`IN (1)`
     }
-    else{
-      status=false
-    }
-    console.log(status)
+    else if(status){
+        status=`IN (0)`
+      }
+    
+    
     // const limit = 100;
-    const { name, code, description} = data;
+    // const { name, code, description} = data;
 //username with id createdby,modifiedby 
     // const individualFiltersQuery = ` name LIKE  '%${name}%' and code LIKE '%${code}%' and description LIKE '%${description}%' `;
     const fullSearchQuery= `SELECT * FROM m_master_department`
-    const individualFiltersQuery = `name LIKE  '%${name}%' OR code LIKE '%${code}%' OR description LIKE '%${description}%'`;
-    const statusFilter = status ? `AND status = 'true'` : ``
+    const individualFiltersQuery = `name LIKE  '%${name}%' 
+                                    OR code LIKE '%${code}%' 
+                                    OR description LIKE '%${description}%'`;
+                                    console.log(status)
+    const statusFilter = status ? `AND status  ${status}` : ``
+    const query = `${fullSearchQuery} where  (${individualFiltersQuery})  ${statusFilter} LIMIT ${limit} `;
+    
     //global search
 
     // console.log('Individual Filters Query:', individualFiltersQuery);
@@ -155,9 +172,10 @@ export class DepartmentService {
     
     
 
-      const query = `${fullSearchQuery} where  (${individualFiltersQuery}) ${statusFilter} LIMIT ${limit} `;
+      
       console.log(query)
        const departments = await this.prismaService.$queryRaw(Prisma.raw(query));
+       console.log(departments)
     // const globalSearchQuery = `SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`
     // console.log(globalSearchQuery)
     // return this.prismaService.$queryRaw(Prisma.raw(`${globalSearchQuery} or (${individualFiltersQuery}) limit ${limit}`));

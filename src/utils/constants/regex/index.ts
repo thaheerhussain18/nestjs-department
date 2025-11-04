@@ -41,6 +41,7 @@ export type RESPONSE_CODES_PROPS = typeof RESPONSE_CODES[keyof typeof RESPONSE_C
 
 export const FEATURE={
     DEPARTMENT:'DEPARTMENT',
+    EMPLOYEE:'EMPLOYEE'
     
 };
 

@@ -1,16 +1,22 @@
-
 {
-  "moduleFileExtensions": ["js", "json", "ts"],
-  "rootDir": ".",
-  "testEnvironment": "node",
+  "moduleFileExtensions": ["js","json","ts"],
+  "rootDir": "../",
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   },
-  "coverageDirectory": "coverage-e2e",
-  "collectCoverageFrom": [
-    "src/**/*.ts",
-    "!src/main.ts",
-    "!src/**/index.ts"
+  "testEnvironment": "node",
+  "reporters": [
+    "default",
+    ["jest-html-reporter", {
+      "pageTitle": "E2E Test Report",
+      "outputPath": "reports/e2e-report.html",
+      "includeFailureMsg": true,
+      "includeConsoleLog": true,
+      "customInfos": [
+        {"title":"Project","value":"My NestJS App"},
+        {"title":"Test type","value":"e2e"}
+      ]
+    }]
   ]
 }

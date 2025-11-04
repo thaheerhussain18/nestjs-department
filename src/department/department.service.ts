@@ -6,12 +6,13 @@ import { GlobalFindAll, userData } from './interfaces/department.types';
 import { ResponseDto } from './dto/responsedto';
 import { action, m_master_department, Prisma } from '../../generated/department';
 import { logParam } from './interfaces/department.types';
-import { DepartmentServiceRelatedFunctions } from './utility/department-service-utilities';
+import { DepartmentServiceRelatedFunctions, stringifyWithBigInt } from './utility/department-service-utilities';
 import { ValidateUpdateData } from './interfaces/department.types';
 
 import { nameAndCodeCheckExistsParamsInterface } from './interfaces/department.types';
 import { validateCreateData } from './interfaces/department.types';
-import { stat } from 'fs';
+// import { stat } from 'fs';
+// import { count } from 'console';
 
 @Injectable()
 export class DepartmentService {
@@ -58,7 +59,7 @@ export class DepartmentService {
 
     }
     catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       throw error
 
     }
@@ -109,84 +110,101 @@ export class DepartmentService {
       throw error;
     }
   }
-
-
-  async departmentFindAll(search?: string,status?:string,limit?,name?,code?,description?) {
-    search = search || '';
-    limit=limit || 10
-    name=name || ``
-    code = code || ``
-    description = description || ``
-    console.log(search,status,limit,name,code,description)
-    status=status || `1`
-    // const status=1
-    // const data: GlobalFindAll = {
-    //   name: '',
-    //   code: ``,
-    //   description: '',
-    //   created_by_id: 0,
-    //   modified_by_id: 2
-    // };
-    
-   if(status.length>2){
-    status=`IN(1,0)`
-   }
-   
-     if(status==`1`){
-      
-      status=`IN (1)`
-    }
-    else if(status){
-        status=`IN (0)`
-      }
-    
-    
-    // const limit = 100;
-    // const { name, code, description} = data;
-//username with id createdby,modifiedby 
-    // const individualFiltersQuery = ` name LIKE  '%${name}%' and code LIKE '%${code}%' and description LIKE '%${description}%' `;
-    const fullSearchQuery= `SELECT * FROM m_master_department`
-    const individualFiltersQuery = `name LIKE  '%${name}%' 
-                                    OR code LIKE '%${code}%' 
-                                    OR description LIKE '%${description}%'`;
-                                    console.log(status)
-    const statusFilter = status ? `AND status  ${status}` : ``
-    const query = `${fullSearchQuery} where  (${individualFiltersQuery})  ${statusFilter} LIMIT ${limit} `;
-    
-    //global search
-
-    // console.log('Individual Filters Query:', individualFiltersQuery);
-    // const resdata = await this.prismaService.m_master_department.findMany({
-    //   where: {
-    //     AND: [
-    //       { name: { contains: name } },
-    //       { code: { startsWith: code } },
-    //       { description: { contains: description } },
-    //       { created_by_id: created_by_id },
-    //       { modified_by_id: modified_by_id }
-    //   ]
-    //   }
-    // })
-    //  await this.prismaService.$queryRaw`SELECT * FROM m_master_department `
-    
-    
-    
-
-      
-      console.log(query)
-       const departments = await this.prismaService.$queryRaw(Prisma.raw(query));
-       console.log(departments)
-    // const globalSearchQuery = `SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`
-    // console.log(globalSearchQuery)
-    // return this.prismaService.$queryRaw(Prisma.raw(`${globalSearchQuery} or (${individualFiltersQuery}) limit ${limit}`));
-    return departments
-    // const query=`SELECT * FROM m_master_department WHERE name LIKE  '%'${userinput}'%' OR code LIKE '%'${userinput}'%' OR description LIKE '%'${userinput}'%'`
-    //  return await this.prismaService.$queryRaw`SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`
-
-
-  }
   async deactivate(id: number) {
     return {}
   }
 
+
+  
+
+
+async departmentFindAll(
+  userCredential:userData,
+  search?: string,
+  status?: string,
+  limit?: number,
+  offset?: number,
+  name?: string,
+  code?: string,
+  description?: string,
+) {
+  try {
+    console.log(search,status,limit,offset,name,code,description)
+    const licenseId = userCredential.license_id;
+
+    // Defaults & sanitise
+    search = (search || '').trim();
+    name = (name || '').trim();
+    code = (code || '').trim();
+    description = (description || '').trim();
+    limit=limit || 5
+    let statusFilter = '';
+    if (!status || status.length > 2) {
+      statusFilter = ' d.status IN (1,0)';
+    } else if (status === '1') {
+      statusFilter = ' d.status IN (1)';
+    } else if (status === '0') {
+      statusFilter = ' d.status IN (0)';
+    }
+    
+   
+    const individualQuery=`d.name LIKE '%${name}%' OR d.code LIKE '%${code}%' OR d.description LIKE '%${description}%'`
+    const concatFirstLastName=`CONCAT(u_created.first_name, ' ', u_created.last_name)`
+
+    const globalQuery=`d.name LIKE '%${search}%' OR
+        d.code LIKE '%${search}%' OR
+        d.description LIKE '%${search}%' OR
+        ${concatFirstLastName} LIKE '%${search}%' OR
+        ${concatFirstLastName} LIKE '%${search}%'`
+   
+    const baseQuery = `
+      FROM m_master_department d
+      INNER JOIN user_information u_created ON d.created_by_id = u_created.id
+      LEFT JOIN user_information u_modified ON d.modified_by_id = u_modified.id
+      WHERE d.license_id = ${licenseId} AND (${globalQuery}) AND (${individualQuery}) AND ${statusFilter}
+    `;
+
+    
+    const dataQuery = `SELECT d.id,d.name,d.code,d.description,d.status,d.created_on,
+        ${concatFirstLastName} AS created_by,d.modified_on,
+        ${concatFirstLastName} AS modified_by,
+        d.created_by_id,
+        d.modified_by_id,
+        d.license_id
+      ${baseQuery}
+    `;
+
+    const countQuery = `
+      SELECT COUNT(*) AS total
+      ${baseQuery};
+    `;
+
+  
+     const data= await this.prismaService.$queryRaw(Prisma.raw(dataQuery))
+     console.log(dataQuery)
+     console.log(data)
+     const countResult= await this.prismaService.$queryRaw(Prisma.raw(countQuery))
+    //  JSON.stringify({...countResult,total:Number(countQuery.total)})
+    //   const serializedData = countResult.map(item => ({
+    //   ...item,
+    //   total: item.total.toString(), 
+    // }));\
+    const total=stringifyWithBigInt(countResult)
+
+console.log(countResult)
+    return {
+      total,
+      data,
+    };
+  } catch (error) {
+    console.error('Error in departmentFindAll:', error);
+    throw error;
+  }
 }
+
+
+
+}
+
+  
+

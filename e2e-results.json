@@ -1,0 +1,621 @@
+{
+    "numFailedTestSuites": 0,
+    "numFailedTests": 0,
+    "numPassedTestSuites": 3,
+    "numPassedTests": 31,
+    "numPendingTestSuites": 0,
+    "numPendingTests": 0,
+    "numRuntimeErrorTestSuites": 0,
+    "numTodoTests": 0,
+    "numTotalTestSuites": 3,
+    "numTotalTests": 31,
+    "openHandles": [],
+    "snapshot": {
+        "added": 0,
+        "didUpdate": false,
+        "failure": false,
+        "filesAdded": 0,
+        "filesRemoved": 0,
+        "filesRemovedList": [],
+        "filesUnmatched": 0,
+        "filesUpdated": 0,
+        "matched": 0,
+        "total": 0,
+        "unchecked": 0,
+        "uncheckedKeysByFile": [],
+        "unmatched": 0,
+        "updated": 0
+    },
+    "startTime": 1762175310395,
+    "success": true,
+    "testResults": [
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [
+                        "Department E2E (Full Auto Validation Suite)"
+                    ],
+                    "duration": 21,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department E2E (Full Auto Validation Suite) Placeholder test to ensure test suite runs",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322490,
+                    "status": "passed",
+                    "title": "Placeholder test to ensure test suite runs"
+                }
+            ],
+            "endTime": 1762175322546,
+            "message": "",
+            "name": "/home/thaheer/Ofc/test/app.e2e-spec.ts",
+            "startTime": 1762175313222,
+            "status": "passed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 270,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-01 Valid data',\n  dataCreate: [Function: dataCreate],\n  expected: 201\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322626,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-01 Valid data',\n  dataCreate: [Function: dataCreate],\n  expected: 201\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 59,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-02 Missing name',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322898,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-02 Missing name',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 16,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-03 Missing code',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322958,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-03 Missing code',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 18,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-04 Name too short',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322975,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-04 Name too short',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 34,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-05 Name too long',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322993,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-05 Name too long',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 24,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-06 Code too short',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323028,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-06 Code too short',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 31,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-07 Code too long',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323053,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-07 Code too long',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 21,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-08 Invalid name regex',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323085,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-08 Invalid name regex',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 33,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-09 Invalid code regex',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323107,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-09 Invalid code regex',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 23,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-10 Empty all fields',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323141,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-10 Empty all fields',\n  dataCreate: [Function: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 284,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-11 Duplicate name inside same license',\n  dataCreate: [AsyncFunction: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323164,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-11 Duplicate name inside same license',\n  dataCreate: [AsyncFunction: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 78,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-12 Duplicate code inside same license',\n  dataCreate: [AsyncFunction: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323449,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-12 Duplicate code inside same license',\n  dataCreate: [AsyncFunction: dataCreate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Create E2E",
+                        "Auto-generated validation tests"
+                    ],
+                    "duration": 74,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Create E2E Auto-generated validation tests {\n  test_case_name: 'DEPARTMENT-CREATE-13 Duplicate name & code inside same license',\n  dataCreate: [AsyncFunction: dataCreate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323528,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: 'DEPARTMENT-CREATE-13 Duplicate name & code inside same license',\n  dataCreate: [AsyncFunction: dataCreate],\n  expected: 409\n}"
+                }
+            ],
+            "endTime": 1762175323630,
+            "message": "",
+            "name": "/home/thaheer/Ofc/test/department/create/department.create.e2e-spec.ts",
+            "startTime": 1762175313304,
+            "status": "passed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 318,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '✅14. Update all fields (valid)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 2,
+                    "retryReasons": [],
+                    "startAt": 1762175322579,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '✅14. Update all fields (valid)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 68,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '✅ 15.Partial update - only name',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322900,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '✅ 15.Partial update - only name',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 74,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '✅ 16.Partial update - only code',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175322969,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '✅ 16.Partial update - only code',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 110,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '✅ 17.Partial update - only description',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323044,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '✅ 17.Partial update - only description',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 200\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 36,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌18. Empty body {} (nothing to update)',\n  dataUpdate: [Function: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323155,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌18. Empty body {} (nothing to update)',\n  dataUpdate: [Function: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 115,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌19. Name too short (min)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323192,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌19. Name too short (min)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 75,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 20.Name too long (max)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323308,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 20.Name too long (max)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 50,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌21. Name invalid regex',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323383,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌21. Name invalid regex',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 68,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 22.Code too short (min)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323434,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 22.Code too short (min)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 196,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 23.Code too long (max)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323503,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 23.Code too long (max)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 49,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 24.Code invalid regex',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323699,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 24.Code invalid regex',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 52,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌25. Description too short (min)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323748,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌25. Description too short (min)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 51,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 26.Description too long (max)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323800,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 26.Description too long (max)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 18,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌27. Non-existent id:number',\n  dataUpdate: [Function: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323853,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌27. Non-existent id:number',\n  dataUpdate: [Function: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 90,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 28.Duplicate name inside same license (should throw)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323871,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 28.Duplicate name inside same license (should throw)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 84,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 29.Duplicate code inside same license (should throw)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175323961,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 29.Duplicate code inside same license (should throw)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                },
+                {
+                    "ancestorTitles": [
+                        "Department Update E2E (PATCH /department/:id)",
+                        "Auto-generated update validation tests"
+                    ],
+                    "duration": 87,
+                    "failing": false,
+                    "failureDetails": [],
+                    "failureMessages": [],
+                    "fullName": "Department Update E2E (PATCH /department/:id) Auto-generated update validation tests {\n  test_case_name: '❌ 30.Duplicate name and code inside same license (should throw)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}",
+                    "invocations": 1,
+                    "location": null,
+                    "numPassingAsserts": 1,
+                    "retryReasons": [],
+                    "startAt": 1762175324045,
+                    "status": "passed",
+                    "title": "{\n  test_case_name: '❌ 30.Duplicate name and code inside same license (should throw)',\n  dataUpdate: [AsyncFunction: dataUpdate],\n  expected: 409\n}"
+                }
+            ],
+            "endTime": 1762175324163,
+            "message": "",
+            "name": "/home/thaheer/Ofc/test/department/update/department.update.e2e-spec.ts",
+            "startTime": 1762175313227,
+            "status": "passed",
+            "summary": ""
+        }
+    ],
+    "wasInterrupted": false
+}

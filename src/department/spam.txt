@@ -234,3 +234,262 @@ async departmentFindAll1(
     data,
   };
 }
+
+
+
+async getDepartmentsWithPagination({loggedInUserDataValues,filterDto}:{loggedInUserDataValues:LoggedInUserDataValues,filterDto?:FilterDto}):Promise<{ total: number;data: any[];skip: number;limit: number;}> {
+    try {
+    await this.userAndlicenseIdValidations(loggedInUserDataValues);
+    const {offset=1, limit = 10, search,name,code,description,status,created_by_id,modified_by_id,createdBy,modifiedBy,sort_column,sort_order = 'desc',}=filterDto||{};
+    const skip=(offset-1)*limit;
+    const licenseId = loggedInUserDataValues.license_id;
+    //console.log('Status from DTO:', status, typeof status);
+    const createdByIds = created_by_id?.split('.').map(id => Number(id)).filter(id => !isNaN(id)) || [];
+    const modifiedByIds = modified_by_id?.split('.').map(id => Number(id)).filter(id => !isNaN(id)) || [];
+    let statusValue;
+    if(status==='1') {
+      statusValue=true;
+    }
+    if(status==='0') {
+      statusValue=false;
+    }
+    const allowedSortColumns = ['name', 'code', 'description', 'status', 'created_on', 'modified_on', 'created_by', 'modified_by'];
+    const sortColumn = allowedSortColumns.includes(sort_column || '') ? sort_column : 'created_on';
+    const sortOrder = sort_order.toLowerCase() === 'desc' ? 'DESC' : 'ASC';
+
+    
+    //console.log('Status from DTO:', status, typeof status);
+    let where = 
+      WHERE d.license_id = ${licenseId}
+      ${search ? AND (d.name LIKE '%${search}%' OR d.code LIKE '%${search}%' OR d.description LIKE '%${search}%' OR CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${search}%' OR CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${search}%') : ''}
+      ${name? AND d.name LIKE '%${name}%' :''}
+      ${code? AND d.code LIKE '%${code}%' :''}
+      ${description? AND d.description LIKE '%${description}%' :''}               
+      ${statusValue !== undefined ? AND d.status = ${statusValue ? 1:0} : ''}
+      ${createdByIds.length ? AND d.created_by_id IN (${createdByIds.join(',')}) : ''}
+      ${modifiedByIds.length ? AND d.modified_by_id IN (${modifiedByIds.join(',')}) : ''}
+      ${createdBy ? AND CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${createdBy}%'  : ''}
+      ${modifiedBy ? AND CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${modifiedBy}%'  : ''}
+    ;
+
+
+    //console.log('Status from DTO:', status, typeof status);
+    //console.log('Generated WHERE:', where);
+
+    const query=
+    SELECT 
+        d.id,
+        d.name,
+        d.code,
+        d.description,
+        d.status,
+        d.created_on,
+        CONCAT(u_created.first_name, ' ', u_created.last_name) AS created_by,
+        d.modified_on,
+        CONCAT(u_modified.first_name, ' ', u_modified.last_name) AS modified_by,
+        d.created_by_id,
+        d.modified_by_id,
+        d.license_id
+      FROM department d
+      JOIN user_information u_created
+        ON d.created_by_id = u_created.id
+      LEFT JOIN user_information u_modified
+        ON d.modified_by_id = u_modified.id
+      ${where}
+      ORDER BY ${sortColumn} ${sortOrder}
+      LIMIT ${limit} OFFSET ${skip};
+
+    const data = await this.prisma.$queryRawUnsafe<any[]>(query);
+    //console.log(data)
+    const countResult: any = await this.prisma.$queryRawUnsafe(
+      SELECT COUNT(*) AS total
+      FROM department d
+      JOIN user_information u_created
+        ON d.created_by_id = u_created.id
+      LEFT JOIN user_information u_modified
+        ON d.modified_by_id = u_modified.id
+      ${where}
+    );
+
+    return {
+      total: Number(countResult[0].total) || 0,
+      data,
+      skip,
+      limit
+    };
+  } catch (error) {
+    //console.log(error)
+    throw error
+    //new ConflictException('Error fetching paginated data');
+  }
+  }
+
+  async departmentFindAllB(search?: string,status?:string,limit?,name?,code?,description?) {
+    search = search || '';
+    limit=limit || 10
+    name=name || ``
+    code = code || ``
+    description = description || ``
+    console.log(search,status,limit,name,code,description)
+    status=status || `1`
+  
+  if(status.length>2){
+    status=`IN(1,0)`
+   }
+   
+     if(status==`1`){
+      
+      status=`IN (1)`
+    }
+    else if(status){
+        status=`IN (0)`
+      }
+    
+    
+    // const limit = 100;
+    // const { name, code, description} = data;
+//username with id createdby,modifiedby 
+    // const individualFiltersQuery = ` name LIKE  '%${name}%' and code LIKE '%${code}%' and description LIKE '%${description}%' `;
+    const fullSearchQuery= `SELECT * FROM m_master_department`
+    const individualFiltersQuery = `name LIKE  '%${name}%' 
+                                    OR code LIKE '%${code}%' 
+                                    OR description LIKE '%${description}%'`;
+                                    console.log(status)
+    const statusFilter = status ? `AND status  ${status}` : ``
+    const query = `${fullSearchQuery} where  (${individualFiltersQuery})  ${statusFilter} LIMIT ${limit} `;
+    
+      
+    //   ${statusValue !== undefined ? AND d.status = ${statusValue ? 1:0} : ''}
+     
+
+    //global search
+
+     
+
+
+    
+
+      
+      console.log(query)
+       const departments = await this.prismaService.$queryRaw(Prisma.raw(query));
+       console.log(departments)
+    // const globalSearchQuery = `SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`
+    // console.log(globalSearchQuery)
+    // return this.prismaService.$queryRaw(Prisma.raw(`${globalSearchQuery} or (${individualFiltersQuery}) limit ${limit}`));
+    return departments
+    // const query=`SELECT * FROM m_master_department WHERE name LIKE  '%'${userinput}'%' OR code LIKE '%'${userinput}'%' OR description LIKE '%'${userinput}'%'`
+    //  return await this.prismaService.$queryRaw`SELECT * FROM m_master_department WHERE name LIKE  '%${userinput}%' OR code LIKE '%${userinput}%' OR description LIKE '%${userinput}%'`
+
+
+  }
+
+async departmentFindAll(
+  search?: string,
+  status?: string,
+  limit?: number,
+  offset?: number,
+  name?: string,
+  code?: string,
+  description?: string,
+  sort_column?: string,
+  sort_order?: string
+) {
+  try {
+    // Default values
+    search = search?.trim() || '';
+    name = name?.trim() || '';
+    code = code?.trim() || '';
+    description = description?.trim() || '';
+    limit = Number(limit) || 10;
+    offset = Number(offset) || 1;
+    sort_column = sort_column || 'created_on';
+    sort_order = sort_order?.toLowerCase() === 'asc' ? 'ASC' : 'DESC';
+
+    const skip = (offset - 1) * limit;
+
+    // Handle status logic
+    let statusFilter = '';
+    if (!status || status.length > 2) {
+      statusFilter = 'AND d.status IN (1,0)';
+    } else if (status === '1') {
+      statusFilter = 'AND d.status IN (1)';
+    } else if (status === '0') {
+      statusFilter = 'AND d.status IN (0)';
+    }
+
+    // Allowed sort columns (security)
+    const allowedSortColumns = [
+      'name', 'code', 'description', 'status',
+      'created_on', 'modified_on', 'created_by', 'modified_by'
+    ];
+    const sortColumn = allowedSortColumns.includes(sort_column)
+      ? sort_column
+      : 'created_on';
+
+    // Base query
+    const baseQuery = `
+      FROM department d
+      INNER JOIN user_information u_created ON d.created_by_id = u_created.id
+      LEFT JOIN user_information u_modified ON d.modified_by_id = u_modified.id
+      WHERE (
+        d.name LIKE '%${search}%' OR
+        d.code LIKE '%${search}%' OR
+        d.description LIKE '%${search}%' OR
+        CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${search}%' OR
+        CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${search}%'
+      )
+      AND (d.name LIKE '%${name}%' OR d.code LIKE '%${code}%' OR d.description LIKE '%${description}%')
+      ${statusFilter}
+    `;
+
+    // Final data query
+    const dataQuery = `
+      SELECT
+        d.id,
+        d.name,
+        d.code,
+        d.description,
+        d.status,
+        d.created_on,
+        CONCAT(u_created.first_name, ' ', u_created.last_name) AS created_by,
+        d.modified_on,
+        CONCAT(u_modified.first_name, ' ', u_modified.last_name) AS modified_by
+      ${baseQuery}
+      ORDER BY ${sortColumn} ${sort_order}
+      LIMIT ${limit} OFFSET ${skip};
+    `;
+
+    // Count query
+    const countQuery = `
+      SELECT COUNT(*) AS total
+      ${baseQuery};
+    `;
+
+    const [data, countResult] = await Promise.all([
+      this.prismaService.$queryRawUnsafe<any[]>(dataQuery),
+      this.prismaService.$queryRawUnsafe<any[]>(countQuery),
+    ]);
+
+    return {
+      total: Number(countResult[0]?.total) || 0,
+      data,
+      skip,
+      limit,
+    };
+  } catch (error) {
+    console.error('Error in departmentFindAll:', error);
+    throw error;
+  }
+}
+
+
+
+
+    limit = Number(limit) || 3;
+    offset = Number(offset) || 1;
+
+    const skip = (offset - 1) * limit;
+    console.log(skip)
+ 
+ 
+      LIMIT ${limit} OFFSET ${skip};

@@ -4,6 +4,7 @@ import { CreateDepartmentDto } from './dto/create-department.dto';
 import { UpdateDepartmentDto } from './dto/update-department.dto';
 import { GlobalFindAll } from './interfaces/department.types';
 import { ApiBody, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { GetAllDepartment } from './dto/get-department.dto';
 
 @Controller('department')
 export class DepartmentController {
@@ -28,19 +29,19 @@ export class DepartmentController {
   }
 
   @Get()
-  @ApiQuery({ name: 'search', required: false })
-  @ApiQuery({ name: 'status', required: false })
-  @ApiQuery({ name: 'limit', required: false })
-  @ApiQuery({name:'name',required:false})
-  @ApiQuery({name:'code',required:false})
-  @ApiQuery({name:'description',required:false})
-  @ApiQuery({name:'offset',required:false})
+  // @ApiQuery({ name: 'search', required: false })
+  // @ApiQuery({ name: 'status', required: false })
+  // @ApiQuery({ name: 'limit', required: false })
+  // @ApiQuery({name:'name',required:false})
+  // @ApiQuery({name:'code',required:false})
+  // @ApiQuery({name:'description',required:false})
+  // @ApiQuery({name:'offset',required:false})
   // @ApiBody({ })
   // @ApiTags('Department Find All')
-  async findAll(@Query('offset') offset,@Query('search')  search?: string,@Query('status') status?:string,@Query('limit') limit?:string,@Query('name') name?,@Query('code') code?,@Query('description') description?) {
-    
-    const limitNumber = limit !== undefined ? Number(limit) : undefined;
-    return await this.departmentService.departmentFindAll(this.getLoggedInUserData(),search, status, limitNumber, offset, name, code, description,);
+  // @ApiQuery({ type: GetAllDepartment })
+  async findAll(@Query() paginationQuery: GetAllDepartment) {
+    console.log(paginationQuery)
+    return await this.departmentService.departmentFindAll(this.getLoggedInUserData(),paginationQuery);
   }
 
   @Get(':id')

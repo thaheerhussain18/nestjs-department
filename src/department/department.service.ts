@@ -11,6 +11,7 @@ import { ValidateUpdateData } from './interfaces/department.types';
 
 import { nameAndCodeCheckExistsParamsInterface } from './interfaces/department.types';
 import { validateCreateData } from './interfaces/department.types';
+import { GetAllDepartment } from './dto/get-department.dto';
 // import { stat } from 'fs';
 // import { count } from 'console';
 
@@ -119,88 +120,105 @@ export class DepartmentService {
 
 
 async departmentFindAll(
-  userCredential:userData,
-  search?: string,
-  status?: string,
-  limit?: number,
-  offset?: number,
-  name?: string,
-  code?: string,
-  description?: string,
+  userCredential: userData,
+  getParams:GetAllDepartment
 ) {
   try {
-    console.log(search,status,limit,offset,name,code,description)
+    console.log(getParams)
     const licenseId = userCredential.license_id;
-
-    // Defaults & sanitise
+    let {search,name,code,description,limit,offset}=getParams
+    // Default values and trimming
     search = (search || '').trim();
     name = (name || '').trim();
     code = (code || '').trim();
     description = (description || '').trim();
-    limit=limit || 5
-    let statusFilter = '';
-    if (!status || status.length > 2) {
-      statusFilter = ' d.status IN (1,0)';
-    } else if (status === '1') {
-      statusFilter = ' d.status IN (1)';
-    } else if (status === '0') {
-      statusFilter = ' d.status IN (0)';
-    }
-    
-   
-    const individualQuery=`d.name LIKE '%${name}%' OR d.code LIKE '%${code}%' OR d.description LIKE '%${description}%'`
-    const concatFirstLastName=`CONCAT(u_created.first_name, ' ', u_created.last_name)`
+    limit = limit || 10;
+    offset = offset || 1;
 
-    const globalQuery=`d.name LIKE '%${search}%' OR
-        d.code LIKE '%${search}%' OR
-        d.description LIKE '%${search}%' OR
-        ${concatFirstLastName} LIKE '%${search}%' OR
-        ${concatFirstLastName} LIKE '%${search}%'`
-   
-    const baseQuery = `
+     const page = (offset ) * limit;
+    // console.log(offset +":Offset" +limit+":Limit")
+    // console.log(page+":Page")
+    // Base query
+    let baseQuery = `
       FROM m_master_department d
       INNER JOIN user_information u_created ON d.created_by_id = u_created.id
       LEFT JOIN user_information u_modified ON d.modified_by_id = u_modified.id
-      WHERE d.license_id = ${licenseId} AND (${globalQuery}) AND (${individualQuery}) AND ${statusFilter}
+      WHERE d.license_id = ${licenseId}
     `;
+   
+    // Apply search filter
+    if (getParams.search) {
+      baseQuery += `
+        AND (
+          d.name LIKE '%${getParams.search}%'
+          OR d.code LIKE '%${getParams.search}%'
+          OR d.description LIKE '%${getParams.search}%'
+          OR CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${getParams.search}%'
+          OR CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${getParams.search}%'
+        )
+      `;
+    }
 
-    
-    const dataQuery = `SELECT d.id,d.name,d.code,d.description,d.status,d.created_on,
-        ${concatFirstLastName} AS created_by,d.modified_on,
-        ${concatFirstLastName} AS modified_by,
+    // Apply individual filters
+    if (name) {
+      baseQuery += ` AND d.name LIKE '%${name}%'`;
+    }
+    if (code) {
+      baseQuery += ` AND d.code LIKE '%${code}%'`;
+    }
+    if (description) {
+      baseQuery += ` AND d.description LIKE '%${description}%'`;
+    }
+
+    // Apply status filter
+    if (getParams.status === '1') {
+      baseQuery += ` AND d.status = 1`;
+    } else if (getParams.status === '0') {
+      baseQuery += ` AND d.status = 0`;
+    } else if(getParams.status===`1.0`){
+      baseQuery += ` AND d.status IN (0, 1)`; // default to both
+    }
+
+    // Data query
+    const dataQuery = `
+      SELECT 
+        d.id,
+        d.name,
+        d.code,
+        d.description,
+        d.status,
+        d.created_on,
+        CONCAT(u_created.first_name, ' ', u_created.last_name) AS created_by,
+        d.modified_on,
+        CONCAT(u_modified.first_name, ' ', u_modified.last_name) AS modified_by,
         d.created_by_id,
         d.modified_by_id,
         d.license_id
       ${baseQuery}
+      LIMIT ${limit} OFFSET ${page};
     `;
 
+    // console.log(dataQuery)
+    // Count query
     const countQuery = `
       SELECT COUNT(*) AS total
       ${baseQuery};
     `;
 
-  
-     const data= await this.prismaService.$queryRaw(Prisma.raw(dataQuery))
-     console.log(dataQuery)
-     console.log(data)
-     const countResult= await this.prismaService.$queryRaw(Prisma.raw(countQuery))
-    //  JSON.stringify({...countResult,total:Number(countQuery.total)})
-    //   const serializedData = countResult.map(item => ({
-    //   ...item,
-    //   total: item.total.toString(), 
-    // }));\
+    // Run queries
+    const data = await this.prismaService.$queryRaw(Prisma.raw(dataQuery));
+    const countResult = await this.prismaService.$queryRaw(Prisma.raw(countQuery));
+
+    console.log(countResult)
     const total=stringifyWithBigInt(countResult)
 
-console.log(countResult)
-    return {
-      total,
-      data,
-    };
+    return { total, data };
   } catch (error) {
     console.error('Error in departmentFindAll:', error);
     throw error;
   }
 }
+
 
 
 

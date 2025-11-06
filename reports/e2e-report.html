@@ -274,124 +274,535 @@ header {
   font-size: 1rem;
   padding: 0 0.5rem;
 }
-</style></head><body><main class="jesthtml-content"><header><h1 id="title">E2E Test Report</h1></header><section id="metadata-container"><div id="timestamp">Started: 2025-11-04 22:04:52</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (3)</div><div class="summary-passed ">3 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (31)</div><div class="summary-passed ">31 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div></div></section><details id="suite-1" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/thaheer/Ofc/test/app.e2e-spec.ts</div><div class="suite-time">2.421s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department E2E (Full Auto Validation Suite)</div><div class="test-title">Placeholder test to ensure test suite runs</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div></div></details><details id="suite-2" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/thaheer/Ofc/test/department/create/department.create.e2e-spec.ts</div><div class="suite-time">2.606s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+</style></head><body><main class="jesthtml-content"><header><h1 id="title">E2E Test Report</h1></header><section id="metadata-container"><div id="timestamp">Started: 2025-11-06 21:21:55</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (4)</div><div class="summary-passed ">3 passed</div><div class="summary-failed ">1 failed</div><div class="summary-pending  summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (49)</div><div class="summary-passed ">45 passed</div><div class="summary-failed ">4 failed</div><div class="summary-pending  summary-empty">0 pending</div></div></div></section><details id="suite-1" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/thaheer/Ofc/test/app.e2e-spec.ts</div><div class="suite-time">4.651s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department E2E (Full Auto Validation Suite)</div><div class="test-title">✅ should successfully create a department in dev API</div><div class="test-status">passed</div><div class="test-duration">0.022s</div></div></div></div></details><details id="suite-2" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/thaheer/Ofc/test/department/create/department.create.e2e-spec.ts</div><div class="suite-time warn">5.553s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-01 Valid data',
   dataCreate: [Function: dataCreate],
   expected: 201
-}</div><div class="test-status">passed</div><div class="test-duration">0.089s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.265s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-02 Missing name',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.008s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.029s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-03 Missing code',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.017s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-04 Name too short',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.028s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-05 Name too long',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.007s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.02s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-06 Code too short',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.027s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-07 Code too long',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.006s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.059s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-08 Invalid name regex',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.016s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-09 Invalid code regex',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.026s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-10 Empty all fields',
   dataCreate: [Function: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.023s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-11 Duplicate name inside same license',
   dataCreate: [AsyncFunction: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.023s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.082s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-12 Duplicate code inside same license',
   dataCreate: [AsyncFunction: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.016s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.101s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Create E2E &gt; Auto-generated validation tests</div><div class="test-title">{
   test_case_name: 'DEPARTMENT-CREATE-13 Duplicate name &amp; code inside same license',
   dataCreate: [AsyncFunction: dataCreate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.014s</div></div></div></div></details><details id="suite-3" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/thaheer/Ofc/test/department/update/department.update.e2e-spec.ts</div><div class="suite-time">2.809s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.088s</div></div></div></div></details><details id="suite-3" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts</div><div class="suite-time warn">6.028s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_001 - Fetch all departments without filters',
+  query: {},
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.24s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_002 - Fetch departments with pagination (limit=5, offset=1)',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">failed</div><div class="test-duration">0.031s</div></div><div class="failureMessages"> <pre class="failureMsg">Error: expected 200 "OK", got 409 "Conflict"
+    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:25:12
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)
+----
+    at Test._assertStatus (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:309:14)
+    at /home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:365:13
+    at Test._assertFunction (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:342:13)
+    at Test.assert (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:195:23)
+    at localAssert (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:138:14)
+    at Server.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:152:11)
+    at Object.onceWrapper (node:events:631:28)
+    at Server.emit (node:events:517:28)
+    at emitCloseNT (node:net:2215:8)
+    at processTicksAndRejections (node:internal/process/task_queues:81:21)</pre></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_003 - Search by keyword in name/code/description',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.04s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_004 - Filter by name',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.036s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_005 - Filter by code',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.053s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_006 - Filter by description',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.04s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_007 - Filter by active status',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.059s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_008 - Filter by inactive status',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.047s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_009 - Sort by created_on ASC',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.068s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_010 - Sort by created_on DESC',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.064s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_011 - Combination filter: search + status + pagination',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">failed</div><div class="test-duration">0.018s</div></div><div class="failureMessages"> <pre class="failureMsg">Error: expected 200 "OK", got 409 "Conflict"
+    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:25:12
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)
+----
+    at Test._assertStatus (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:309:14)
+    at /home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:365:13
+    at Test._assertFunction (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:342:13)
+    at Test.assert (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:195:23)
+    at localAssert (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:138:14)
+    at Server.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:152:11)
+    at Object.onceWrapper (node:events:631:28)
+    at Server.emit (node:events:517:28)
+    at emitCloseNT (node:net:2215:8)
+    at processTicksAndRejections (node:internal/process/task_queues:81:21)</pre></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_012 - Invalid limit (string instead of number)',
+  query: [Object],
+  expected: 409
+}</div><div class="test-status">passed</div><div class="test-duration">0.021s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_013 - Invalid order value',
+  query: [Object],
+  expected: 409
+}</div><div class="test-status">passed</div><div class="test-duration">0.022s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_015 - Invalid status value',
+  query: [Object],
+  expected: 200
+}</div><div class="test-status">passed</div><div class="test-duration">0.05s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_016 - Create department and verify via GET search',
+  expected: 200,
+  dynamicTest: [AsyncFunction: dynamicTest]
+}</div><div class="test-status">passed</div><div class="test-duration">0.225s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_017 - Create department and verify by code filter',
+  expected: 200,
+  dynamicTest: [AsyncFunction: dynamicTest]
+}</div><div class="test-status">failed</div><div class="test-duration">0.089s</div></div><div class="failureMessages"> <pre class="failureMsg">TypeError: Cannot read properties of undefined (reading 'code')
+    at Object.dynamicTest (/home/thaheer/Ofc/test/department/fetch/department-get-cases.ts:121:36)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:19:9</pre></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_018 - Create department and verify pagination and sorting order',
+  expected: 200,
+  dynamicTest: [AsyncFunction: dynamicTest]
+}</div><div class="test-status">failed</div><div class="test-duration">0.055s</div></div><div class="failureMessages"> <pre class="failureMsg">Error: expected 200 "OK", got 409 "Conflict"
+    at Object.dynamicTest (/home/thaheer/Ofc/test/department/fetch/department-get-cases.ts:139:12)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:19:9
+----
+    at Test._assertStatus (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:309:14)
+    at /home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:365:13
+    at Test._assertFunction (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:342:13)
+    at Test.assert (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:195:23)
+    at localAssert (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:138:14)
+    at Server.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/supertest@7.1.4/node_modules/supertest/lib/test.js:152:11)
+    at Object.onceWrapper (node:events:631:28)
+    at Server.emit (node:events:517:28)
+    at emitCloseNT (node:net:2215:8)
+    at processTicksAndRejections (node:internal/process/task_queues:81:21)</pre></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Get E2E (GET /department) &gt; Auto-generated get validation tests</div><div class="test-title">{
+  test_case_name: 'GET_019 - Verify filtering by description substring',
+  expected: 200,
+  dynamicTest: [AsyncFunction: dynamicTest]
+}</div><div class="test-status">passed</div><div class="test-duration">0.072s</div></div></div></div><div class="suite-consolelog"><div class="suite-consolelog-header">Console Log</div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{}</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{}</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ limit: 5, offset: 0 }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ search: 'admin' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ search: 'admin' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ name: 'Finance' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ name: 'Finance' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ code: 'HR001' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ code: 'HR001' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ description: 'technical' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ description: 'technical' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ status: '1' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ status: '1' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ status: '0' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ status: '0' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ sort_by: 'created_on', order: 'ASC' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ sort_by: 'created_on', order: 'ASC' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ sort_by: 'created_on', order: 'DESC' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ sort_by: 'created_on', order: 'DESC' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ search: 'admin', status: '1', limit: 5, offset: 1 }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ limit: 'abc' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ limit: 'abc' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ order: 'INVALID' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ order: 'INVALID' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:21:17
+    at Object.&lt;anonymous&gt; (/home/thaheer/Ofc/node_modules/.pnpm/jest-each@30.2.0/node_modules/jest-each/build/index.js:80:140)
+    at Promise.finally.completed (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1557:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1497:10)
+    at _callCircusTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1007:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:947:3)
+    at /home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:849:7
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:862:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at _runTestsForDescribeBlock (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:857:11)
+    at run (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:761:3)
+    at runAndTransformResultsToJestFormat (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/jestAdapterInit.js:1918:21)
+    at jestAdapter (/home/thaheer/Ofc/node_modules/.pnpm/jest-circus@30.2.0/node_modules/jest-circus/build/runner.js:101:19)
+    at runTestInternal (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:275:16)
+    at runTest (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:343:7)
+    at Object.worker (/home/thaheer/Ofc/node_modules/.pnpm/jest-runner@30.2.0/node_modules/jest-runner/build/testWorker.js:497:12)</pre><pre class="suite-consolelog-item-message">{ status: '9' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:26:9
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</pre><pre class="suite-consolelog-item-message">{ status: '9' }</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Object.dynamicTest (/home/thaheer/Ofc/test/department/fetch/department-get-cases.ts:98:17)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at /home/thaheer/Ofc/test/department/fetch/department.get.e2e-spec.ts:19:9</pre><pre class="suite-consolelog-item-message">{
+  id: 2243,
+  name: "G_@Yt74x'NwFaM2Ej-kJ",
+  code: 'CJ_f/h\\cmt-9fjhlrKJTRVX2rQQOLmqhY2',
+  description: 'Customer.',
+  status: 1,
+  created_on: '2025-11-06T15:52:03.504Z',
+  created_by: 'admin sync',
+  modified_on: null,
+  modified_by: null,
+  created_by_id: 2,
+  modified_by_id: null,
+  license_id: 1
+}</pre></div></div></details><details id="suite-4" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/thaheer/Ofc/test/department/update/department.update.e2e-spec.ts</div><div class="suite-time warn">6.255s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '✅14. Update all fields (valid)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 200
-}</div><div class="test-status">passed</div><div class="test-duration">0.103s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.313s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '✅ 15.Partial update - only name',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 200
-}</div><div class="test-status">passed</div><div class="test-duration">0.024s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.106s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '✅ 16.Partial update - only code',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 200
-}</div><div class="test-status">passed</div><div class="test-duration">0.027s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.098s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '✅ 17.Partial update - only description',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 200
-}</div><div class="test-status">passed</div><div class="test-duration">0.02s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
-  test_case_name: '❌18. Empty body {} (nothing to update)',
+}</div><div class="test-status">passed</div><div class="test-duration">0.092s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+  test_case_name: '❌18. Empty body {} ',
   dataUpdate: [Function: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.007s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.033s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌19. Name too short (min)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.016s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.064s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 20.Name too long (max)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.024s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.081s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌21. Name invalid regex',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.021s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.088s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 22.Code too short (min)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.02s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.062s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 23.Code too long (max)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.018s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.074s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 24.Code invalid regex',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.014s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.079s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌25. Description too short (min)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.012s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.045s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 26.Description too long (max)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.018s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.079s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌27. Non-existent id:number',
   dataUpdate: [Function: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.015s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 28.Duplicate name inside same license (should throw)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.021s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.091s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 29.Duplicate code inside same license (should throw)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.022s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
+}</div><div class="test-status">passed</div><div class="test-duration">0.103s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Department Update E2E (PATCH /department/:id) &gt; Auto-generated update validation tests</div><div class="test-title">{
   test_case_name: '❌ 30.Duplicate name and code inside same license (should throw)',
   dataUpdate: [AsyncFunction: dataUpdate],
   expected: 409
-}</div><div class="test-status">passed</div><div class="test-duration">0.02s</div></div></div></div></details></main></body></html>
+}</div><div class="test-status">passed</div><div class="test-duration">0.099s</div></div></div></div></details></main></body></html>

@@ -42,3 +42,19 @@ export interface GlobalFindAll{
   modified_by_id?:number
 
 }
+export enum sortingsAllowed {
+  "status","modified_by","created_by","created_on","modified_on","description","code","name"}
+
+
+  export enum SORT_COLUMN {
+    ASC= 'ASC',
+    DESC ='DESC'
+  }
+
+  export enum page{
+    one=1,
+    two=2,
+    three=3,
+    four=4,
+    five=5
+  }

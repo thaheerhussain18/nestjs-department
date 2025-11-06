@@ -6,6 +6,7 @@ export interface caseType {
     test_case_name: string;
     dataCreate?: ((app: INestApplication) => Promise<any>) | (() => any);
     dataUpdate?: (app: INestApplication) => Promise<validData> | any;
+    query?:any,
     expected: RESPONSE_CODES_PROPS;
 }
 
@@ -26,3 +27,5 @@ export interface validData{
     code?:string;
     description?:string;
 }
+
+// 194

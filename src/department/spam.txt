@@ -125,6 +125,12 @@ const existing = await this.prismaService.m_master_department.findUnique({ where
 
       }
     })
+
+    const existing = await this.prismaService.m_master_department.findUnique({ where: { id:depid,license_id:userData.license_id } });
+    if (!existing) {
+      throw new NotFoundException(`Department with id ${depid} not found`);
+    }
+
     await this.prismaService.m_master_department_log.create({
       data: {
         name: existing.name,

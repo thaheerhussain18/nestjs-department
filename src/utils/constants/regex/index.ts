@@ -12,7 +12,8 @@
 
 // }
 
-export const FORM_VALIDATION = {
+export const 
+FORM_VALIDATION = {
     
     NAME:{
         REGEX:/^[A-Za-z0-9][A-Za-z0-9 _\-\.'()&@+]*$/,

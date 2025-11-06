@@ -6,9 +6,9 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  const config = new DocumentBuilder().addTag("Department","department endpoints").build()
+  // const config = 
 
-  SwaggerModule.setup('v1',app,SwaggerModule.createDocument(app,config))
+  SwaggerModule.setup('v1',app,SwaggerModule.createDocument(app,new DocumentBuilder().setTitle("SyncOffice").addTag("Department","department endpoints").build()))
   app.useGlobalPipes(new ValidationPipe({
     exceptionFactory: (errors) => {
         // Here you can shape your response as required

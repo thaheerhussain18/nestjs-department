@@ -26,8 +26,8 @@ export const generateInvalidCase = (
         case 'max':
             brokenValue = generateRandomRegexString({
                 regex,
-                minLength: rule.MAX_LENGTH + 1,
-                maxLength: rule.MAX_LENGTH + 10,
+                minLength: rule.MAX_LENGTH + 1, //51
+                maxLength: rule.MAX_LENGTH + 10,//61
                 isValid: true,
             });
             break;

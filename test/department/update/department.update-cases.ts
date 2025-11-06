@@ -56,7 +56,7 @@ export const departmentUpdateTests = () => {
         },
 
         {
-            test_case_name: '❌18. Empty body {} (nothing to update)',
+            test_case_name: '❌18. Empty body {} ',
             dataUpdate: () => ({}),
             expected: RESPONSE_CODES.CONFLICT_ERROR_CODE,
         },

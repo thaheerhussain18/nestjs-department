@@ -4,7 +4,7 @@ import { UpdateDepartmentDto } from './dto/update-department.dto';
 import { PrismaService } from '../prismaservice';
 import { GlobalFindAll, SORT_COLUMN, sortingsAllowed, userData } from './interfaces/department.types';
 import { ResponseDto } from './dto/responsedto';
-import { action, m_master_department, Prisma } from '../../generated/department';
+
 import { logParam } from './interfaces/department.types';
 import { DepartmentServiceRelatedFunctions, stringifyWithBigInt } from './utility/department-service-utilities';
 import { ValidateUpdateData } from './interfaces/department.types';
@@ -14,6 +14,7 @@ import { validateCreateData } from './interfaces/department.types';
 import { GetAllDepartment } from './dto/get-department.dto';
 import puppeteer from 'puppeteer';
 import moment from 'moment'
+import { action, m_master_department, Prisma } from 'generated/department';
 
 @Injectable()
 export class DepartmentService {

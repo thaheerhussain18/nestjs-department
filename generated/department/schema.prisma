@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/department"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model user_credentials {
+  id               Int               @id @default(autoincrement())
+  username         String
+  password         String
+  license_id       Int
+  user_information user_information?
+}
+
+model user_information {
+  id                      Int                       @id @default(autoincrement())
+  first_name              String
+  last_name               String
+  license_id              Int
+  credential_id           Int                       @unique
+  user_credential         user_credentials          @relation(fields: [credential_id], references: [id])
+  c_master_department     m_master_department[]     @relation("created_master")
+  m_master_department     m_master_department[]     @relation("modified_master")
+  m_master_department_log m_master_department_log[]
+}
+
+model m_master_department {
+  id             Int               @id @default(autoincrement())
+  name           String
+  code           String
+  license_id     Int
+  description    String
+  created_on     DateTime          @default(now())
+  created_by_id  Int
+  modified_on    DateTime?
+  modified_by_id Int?
+  status         Boolean           @default(true)
+  created_by     user_information  @relation("created_master", fields: [created_by_id], references: [id])
+  modified_by    user_information? @relation("modified_master", fields: [modified_by_id], references: [id])
+
+  m_master_department_log m_master_department_log[]
+}
+
+model m_master_department_log {
+  id                 Int                  @id @default(autoincrement())
+  name               String?
+  code               String?
+  license_id         Int
+  description        String?
+  created_on         DateTime             @default(now())
+  status             Boolean?
+  change_description String               @db.LongText
+  action             action
+  department_id      Int?
+  created_by_id      Int
+  created_by         user_information     @relation(fields: [created_by_id], references: [id])
+  department         m_master_department? @relation(fields: [department_id], references: [id])
+}
+
+enum action {
+  Created
+  Modified
+  Activated
+  Deactivated
+  Download
+}

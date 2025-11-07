@@ -12,7 +12,7 @@ export class DepartmentController {
  
  
   getLoggedInUserData(){
-      return {user_id:2,license_id:1};
+      return {user_id:2,license_id:2};
     }
  
   @Post()
@@ -28,7 +28,7 @@ export class DepartmentController {
     return await this.departmentService.update(+id, updateDepartmentDto,this.getLoggedInUserData());
   }
 
-  @UsePipes(new ValidationPipe({  exceptionFactory: (errors) => new ConflictException(errors),whitelist: true, forbidNonWhitelisted: true }))
+  @UsePipes(new ValidationPipe({ transform:true,whitelist: true }))
   @Get()
   // @ApiQuery({ name: 'search', required: false })
   // @ApiQuery({ name: 'status', required: false })

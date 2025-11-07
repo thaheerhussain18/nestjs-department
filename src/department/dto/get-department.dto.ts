@@ -1,6 +1,7 @@
 import {  ApiProperty } from "@nestjs/swagger"
 import { IsEnum, IsInt, IsOptional, IsString } from "class-validator"
 import { page, SORT_COLUMN, sortingsAllowed } from "../interfaces/department.types"
+import { Type } from "class-transformer"
 
 
 export class GetAllDepartment {
@@ -13,12 +14,14 @@ export class GetAllDepartment {
     @IsString()
     status?: string
     @ApiProperty({required:false})
+    @Type(() => Number)
     @IsOptional()
     @IsInt()
     limit?: number
     @ApiProperty({required:false})
     @IsOptional()
     @IsInt()
+    @Type(() => Number)
     offset?: number
     @ApiProperty({required:false})
     @IsOptional()

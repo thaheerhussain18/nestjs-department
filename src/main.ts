@@ -20,8 +20,9 @@ async function bootstrap() {
             constraints: err.constraints,
           })),
         });},
-    whitelist: true,
+        
     transform:true,
+    whitelist: true,
     transformOptions:{
       enableImplicitConversion:true
     }

@@ -14,7 +14,7 @@ import { validateCreateData } from './interfaces/department.types';
 import { GetAllDepartment } from './dto/get-department.dto';
 import puppeteer from 'puppeteer';
 import moment from 'moment'
-import { action, m_master_department, Prisma } from 'generated/department';
+import { action, m_master_department, Prisma } from '../../generated/department';
 
 @Injectable()
 export class DepartmentService {

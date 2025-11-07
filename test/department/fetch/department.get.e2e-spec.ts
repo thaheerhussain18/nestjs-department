@@ -23,7 +23,10 @@ describe('Department Get E2E (GET /department)', () => {
           .get('/department')
           .query(testCase.query|| {})
           .expect(testCase.expected);
-console.log(testCase.query)
+       
+          console.log("--------------------------------------------------------------------------------------")
+          // console.log(testCase.query)
+          console.log(res.body.data)
         if (testCase.expected === 200) {
           expect(res.body).toHaveProperty('data');
           expect(Array.isArray(res.body.data)).toBe(true);

@@ -12,7 +12,7 @@ export const departmentGetTests = () => {
     },
     {
       test_case_name: 'GET_002 - Fetch departments with pagination (limit=5, offset=1)',
-      query: { limit: 5, offset: 0 },
+      query: { limit: '5', offset: '0' },
       expected: 200,
     },
     {
@@ -20,68 +20,65 @@ export const departmentGetTests = () => {
       query: { search: 'admin' },
       expected: 200,
     },
+
     {
       test_case_name: 'GET_004 - Filter by name',
       query: { name: 'Finance' },
       expected: 200,
     },
+   
     {
-      test_case_name: 'GET_005 - Filter by code',
-      query: { code: 'HR001' },
-      expected: 200,
-    },
-    {
-      test_case_name: 'GET_006 - Filter by description',
+      test_case_name: 'GET_005 - Filter by description',
       query: { description: 'technical' },
       expected: 200,
     },
     {
-      test_case_name: 'GET_007 - Filter by active status',
+      test_case_name: 'GET_006 - Filter by active status',
       query: { status: '1' },
       expected: 200,
     },
     {
-      test_case_name: 'GET_008 - Filter by inactive status',
+      test_case_name: 'GET_007 - Filter by inactive status',
       query: { status: '0' },
       expected: 200,
     },
     {
-      test_case_name: 'GET_009 - Sort by created_on ASC',
+      test_case_name: 'GET_008 - Sort by created_on ASC',
       query: { sort_by: 'created_on', order: 'ASC' },
       expected: 200,
     },
     {
-      test_case_name: 'GET_010 - Sort by created_on DESC',
+      test_case_name: 'GET_009 - Sort by created_on DESC',
       query: { sort_by: 'created_on', order: 'DESC' },
       expected: 200,
     },
     {
-      test_case_name: 'GET_011 - Combination filter: search + status + pagination',
+      test_case_name: 'GET_010 - Combination filter: search + status + pagination',
       query: { search: 'admin', status: '1', limit: 5, offset: 1 },
       expected: 200,
     },
 
     // // ⚠️ Negative validation
     {
-      test_case_name: 'GET_012 - Invalid limit (string instead of number)',
+      test_case_name: 'GET_011 - Invalid limit (string instead of number)',
       query: { limit: 'abc' },
-      expected: 409,
+      expected: 400,
     },
     {
-      test_case_name: 'GET_013 - Invalid order value',
+      test_case_name: 'GET_012 - Invalid order value',
       query: { order: 'INVALID' },
-      expected: 409,
+      expected: 400,
     },
    
     {
-      test_case_name: 'GET_015 - Invalid status value',
+      test_case_name: 'GET_013 - Invalid status value',
       query: { status: '9' },
       expected: 200,
     },
 
     // // ✅ 2️⃣ Dynamic create → get → validate flow
     {
-      test_case_name: 'GET_016 - Create department and verify via GET search',
+      test_case_name: 'GET_014 - Create department and verify via GET search',
       expected: 200,
       async dynamicTest(app) {
         const payload = generate(true);
@@ -102,7 +99,7 @@ export const departmentGetTests = () => {
       },
     },
     {
-      test_case_name: 'GET_017 - Create department and verify by code filter',
+      test_case_name: 'GET_015 - Create department and verify by code filter',
       expected: 200,
       async dynamicTest(app) {
         const payload = generate(true);
@@ -115,16 +112,16 @@ export const departmentGetTests = () => {
           .get('/department')
           .query({ code: payload.code })
           .expect(200);
-
+        console.log(getRes.text)
           // console.log(getRes.body.data[0].code+"--------"+payload.code)
         // console.log(getRes.body)
-        expect(getRes.body.data[0].code).toBe(payload.code);
+        expect(getRes.body?.data[0].code).toBe(payload.code);
 
        
       },
     },
     {
-      test_case_name: 'GET_018 - Create department and verify pagination and sorting order',
+      test_case_name: 'GET_016 - Create department and verify pagination and sorting order',
       expected: 200,
       async dynamicTest(app) {
         const payload = generate(true);
@@ -144,7 +141,7 @@ export const departmentGetTests = () => {
       },
     },
     {
-      test_case_name: 'GET_019 - Verify filtering by description substring',
+      test_case_name: 'GET_017 - Verify filtering by description substring',
       expected: 200,
       async dynamicTest(app) {
         const payload = generate(true);
@@ -158,7 +155,8 @@ export const departmentGetTests = () => {
           .query({ description: payload.description.substring(0, 3) })
           .expect(200);
 
-        // expect(getRes.body.data.some((d) => d.id === createRes.body.id)).toBe(true);
+          console.log(getRes.body)
+        expect(getRes.body.data.some((d) => d.id === createRes.body.id)).toBe(true);
 
       
       },

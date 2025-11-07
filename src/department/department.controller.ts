@@ -70,18 +70,18 @@ export class DepartmentController {
   }
 
  
-@Get('downloadDepartment')
-    @ApiResponse({ status: 200, description: 'PDF file generated successfully',content: { 'application/pdf': { schema: { type: 'string', format: 'binary' } } }, })
-    async getDownloadData(
-      @Query() generatePdfDto:GeneratePdfDto,
-      @Res() res:Response,)
-      {
-        const loggedInUserDataValues = this.getLoggedInUserData();
-        const {data,requestedColumns} = await this.departmentService.getAllDepartments({generatePdfDto,loggedInUserDataValues,})
-        const pdfBuffer=await this.departmentService.generateTablePDF(data,'department',requestedColumns)
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename="Department"');
-    res.end(pdfBuffer);
-    }
+// @Get('downloadDepartment')
+//     @ApiResponse({ status: 200, description: 'PDF file generated successfully',content: { 'application/pdf': { schema: { type: 'string', format: 'binary' } } }, })
+//     async getDownloadData(
+//       @Query() generatePdfDto:GeneratePdfDto,
+//       @Res() res:Response,)
+//       {
+//         const loggedInUserDataValues = this.getLoggedInUserData();
+//         const {data,requestedColumns} = await this.departmentService.getAllDepartments({generatePdfDto,loggedInUserDataValues,})
+//         const pdfBuffer=await this.departmentService.generateTablePDF(data,'department',requestedColumns)
+//     res.setHeader('Content-Type', 'application/pdf');
+//     res.setHeader('Content-Disposition', 'attachment; filename="Department"');
+//     res.end(pdfBuffer);
+//     }
 
 }

@@ -352,123 +352,123 @@ export class DepartmentService {
   }
 
 
-async getAllDepartments({generatePdfDto,loggedInUserDataValues,}: {generatePdfDto: GeneratePdfDto;loggedInUserDataValues: userData;}) {
-  try {
-  await this.serviceRelatedFunctions.existingUserCheck(loggedInUserDataValues);
-  const licenseId = loggedInUserDataValues.license_id;
-  const {search,name,code,description,status,created_by_id,modified_by_id,sort_column,sort_order,createdBy,modifiedBy} = generatePdfDto || {};
+// async getAllDepartments({generatePdfDto,loggedInUserDataValues,}: {generatePdfDto;loggedInUserDataValues: userData;}) {
+//   try {
+//   await this.serviceRelatedFunctions.existingUserCheck(loggedInUserDataValues);
+//   const licenseId = loggedInUserDataValues.license_id;
+//   const {search,name,code,description,status,created_by_id,modified_by_id,sort_column,sort_order,createdBy,modifiedBy} = generatePdfDto || {};
  
-  const columnsValue = generatePdfDto?.columns;
-  const requestedColumns: string[] =
-    typeof columnsValue === 'string' && columnsValue.trim() !== ''
-      ? columnsValue
-          .split(',')
-          .map((col: string) => col.trim())
-          .filter(Boolean)
-      : [];
-  if (requestedColumns.length === 0) {
-    throw new ConflictException(
-      `Invalid columns request. You sent an empty column string.Please provide at least one valid column.`,
-    );
-  }
+//   const columnsValue = generatePdfDto?.columns;
+//   const requestedColumns: string[] =
+//     typeof columnsValue === 'string' && columnsValue.trim() !== ''
+//       ? columnsValue
+//           .split(',')
+//           .map((col: string) => col.trim())
+//           .filter(Boolean)
+//       : [];
+//   if (requestedColumns.length === 0) {
+//     throw new ConflictException(
+//       `Invalid columns request. You sent an empty column string.Please provide at least one valid column.`,
+//     );
+//   }
       
-  const PDF_COLUMNS_LIMIT=6;
-  if (requestedColumns.length>PDF_COLUMNS_LIMIT){
-    throw new ConflictException(`Maximum selection of columns for pdf is ${PDF_COLUMNS_LIMIT}`);
-  }
-  const createdByIds =created_by_id?.split('.').map((id) => Number(id)).filter((id) => !isNaN(id)) || [];
-  const modifiedByIds =modified_by_id?.split('.').map((id) => Number(id)).filter((id) => !isNaN(id)) || [];
+//   const PDF_COLUMNS_LIMIT=6;
+//   if (requestedColumns.length>PDF_COLUMNS_LIMIT){
+//     throw new ConflictException(`Maximum selection of columns for pdf is ${PDF_COLUMNS_LIMIT}`);
+//   }
+//   const createdByIds =created_by_id?.split('.').map((id) => Number(id)).filter((id) => !isNaN(id)) || [];
+//   const modifiedByIds =modified_by_id?.split('.').map((id) => Number(id)).filter((id) => !isNaN(id)) || [];
  
-  let statusValue: boolean | undefined;
-  if (status === '1') {
-    statusValue = true;
-  }
-  if (status === '0') {
-    statusValue = false;
-  }
+//   let statusValue: boolean | undefined;
+//   if (status === '1') {
+//     statusValue = true;
+//   }
+//   if (status === '0') {
+//     statusValue = false;
+//   }
  
-  const allowedColumns = [
-    'd.id',
-    'd.name',
-    'd.code',
-    'd.description',
-    "CASE WHEN d.status = 1 THEN 'Active' WHEN d.status = 0 THEN 'InActive' ELSE '-' END AS status",
-    'd.created_on',
-    "CONCAT(u_created.first_name, ' ', u_created.last_name) AS created_by",
-    'd.modified_on',
-    "CONCAT(u_modified.first_name, ' ', u_modified.last_name) AS modified_by",
-  ];
- 
- 
-  const invalidColumns = requestedColumns.filter(col => !allowedColumns.some(aCol => aCol.toLowerCase().endsWith(col.toLowerCase())));
- 
-  if (invalidColumns.length > 0) {
-    throw new ConflictException(
-      `Invalid columns requested: [${invalidColumns.join(', ',)}].`,
-    );
-  }
-  //console.log({invalidColumns});
- 
-  const selectedColumns =
-  requestedColumns.length > 0
-    ? allowedColumns.filter((col) =>
-          requestedColumns.some((reqCol) => col.includes(reqCol)),)
-    :[];
-  //console.log({selectedColumns})
-  const select = selectedColumns.join(', ');
- 
-  const conditions: string[] = [];
-  if (licenseId ) conditions.push(`d.license_id = ${licenseId}`);
-  if (search) conditions.push(`(d.name LIKE '%${search}%' OR d.code LIKE '%${search}%' OR d.description LIKE '%${search}%'OR CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${search}%' OR CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${search}% )`,);
-  if (name) conditions.push(`d.name LIKE '%${name}%'`);
-  if (code) conditions.push(`d.code LIKE '%${code}%'`);
-  if (description) conditions.push(`d.description LIKE '%${description}%'`);
-  if (statusValue !== undefined) conditions.push(`d.status = ${statusValue ? 1 : 0}`);
-  if (createdByIds.length > 0) conditions.push(`d.created_by_id IN (${createdByIds.join(',')})`);
-  if (modifiedByIds.length > 0) conditions.push(`d.modified_by_id IN (${modifiedByIds.join(',')})`);
-  if (createdBy) conditions.push(`CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${createdBy}%'`);
-  if (modifiedBy) conditions.push(`CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${modifiedBy}%'`);
+//   const allowedColumns = [
+//     'd.id',
+//     'd.name',
+//     'd.code',
+//     'd.description',
+//     "CASE WHEN d.status = 1 THEN 'Active' WHEN d.status = 0 THEN 'InActive' ELSE '-' END AS status",
+//     'd.created_on',
+//     "CONCAT(u_created.first_name, ' ', u_created.last_name) AS created_by",
+//     'd.modified_on',
+//     "CONCAT(u_modified.first_name, ' ', u_modified.last_name) AS modified_by",
+//   ];
  
  
+//   const invalidColumns = requestedColumns.filter(col => !allowedColumns.some(aCol => aCol.toLowerCase().endsWith(col.toLowerCase())));
  
-  const where = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
-  const allowedSortColumns = [
-      'name',
-      'code',
-      'description',
-      'status',
-      'created_on',
-      'modified_on',
-      'created_by',
-      'modified_by'
-    ];
+//   if (invalidColumns.length > 0) {
+//     throw new ConflictException(
+//       `Invalid columns requested: [${invalidColumns.join(', ',)}].`,
+//     );
+//   }
+//   //console.log({invalidColumns});
+ 
+//   const selectedColumns =
+//   requestedColumns.length > 0
+//     ? allowedColumns.filter((col) =>
+//           requestedColumns.some((reqCol) => col.includes(reqCol)),)
+//     :[];
+//   //console.log({selectedColumns})
+//   const select = selectedColumns.join(', ');
+ 
+//   const conditions: string[] = [];
+//   if (licenseId ) conditions.push(`d.license_id = ${licenseId}`);
+//   if (search) conditions.push(`(d.name LIKE '%${search}%' OR d.code LIKE '%${search}%' OR d.description LIKE '%${search}%'OR CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${search}%' OR CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${search}% )`,);
+//   if (name) conditions.push(`d.name LIKE '%${name}%'`);
+//   if (code) conditions.push(`d.code LIKE '%${code}%'`);
+//   if (description) conditions.push(`d.description LIKE '%${description}%'`);
+//   if (statusValue !== undefined) conditions.push(`d.status = ${statusValue ? 1 : 0}`);
+//   if (createdByIds.length > 0) conditions.push(`d.created_by_id IN (${createdByIds.join(',')})`);
+//   if (modifiedByIds.length > 0) conditions.push(`d.modified_by_id IN (${modifiedByIds.join(',')})`);
+//   if (createdBy) conditions.push(`CONCAT(u_created.first_name, ' ', u_created.last_name) LIKE '%${createdBy}%'`);
+//   if (modifiedBy) conditions.push(`CONCAT(u_modified.first_name, ' ', u_modified.last_name) LIKE '%${modifiedBy}%'`);
+ 
+ 
+ 
+//   const where = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+//   const allowedSortColumns = [
+//       'name',
+//       'code',
+//       'description',
+//       'status',
+//       'created_on',
+//       'modified_on',
+//       'created_by',
+//       'modified_by'
+//     ];
     
-    const sortColumn = allowedSortColumns.includes(sort_column || '')
-      ? sort_column
-      : 'd.created_on';
-    const sortOrder = (sort_order || 'asc').toLowerCase() === 'desc' ? 'DESC' : 'ASC';
+//     const sortColumn = allowedSortColumns.includes(sort_column || '')
+//       ? sort_column
+//       : 'd.created_on';
+//     const sortOrder = (sort_order || 'asc').toLowerCase() === 'desc' ? 'DESC' : 'ASC';
  
-  const query = `
-    SELECT ${select}
-    FROM department d
-    JOIN user_information u_created
-      ON d.created_by_id = u_created.id
-    LEFT JOIN user_information u_modified
-      ON d.modified_by_id = u_modified.id
-    ${where}
-    ORDER BY ${sortColumn} ${sortOrder};
-  `;
-console.log(query)
-  const data =await this.prismaService.$queryRawUnsafe<any[]>(query)
+//   const query = `
+//     SELECT ${select}
+//     FROM department d
+//     JOIN user_information u_created
+//       ON d.created_by_id = u_created.id
+//     LEFT JOIN user_information u_modified
+//       ON d.modified_by_id = u_modified.id
+//     ${where}
+//     ORDER BY ${sortColumn} ${sortOrder};
+//   `;
+// console.log(query)
+//   const data =await this.prismaService.$queryRawUnsafe<any[]>(query)
  
-  return {
-      data,
-      requestedColumns,
-    };
-  }catch(error) {
-    throw error;
-  }
-}
+//   return {
+//       data,
+//       requestedColumns,
+//     };
+//   }catch(error) {
+//     throw error;
+//   }
+// }
 
 
 
